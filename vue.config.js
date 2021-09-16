@@ -2,7 +2,8 @@ module.exports = {
   lintOnSave: false,
   filenameHashing: false,
   // assetsDir: "static", // 放置生成的靜態資源 (js、css、img、fonts) 的目錄。default: ''
-  publicPath: "./",
+  //publicPath: "./",
+  publicPath: "./Data_System",
   pages: {
     front: {
       entry: "src/front/main.js", // 配置入口js檔案

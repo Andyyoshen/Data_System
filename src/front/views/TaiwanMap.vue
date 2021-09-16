@@ -49,14 +49,14 @@ export default {
       January_Accident: "",
       February_Accident: "",
       Tai_None_Accident: "",
-      Total_Tai_None_Arry:[],
+      Total_Tai_None_Arry: [],
     };
   },
   mounted() {
     //  this.testapi()
     this.getTaiwanMap();
-    this.GetTaiwanAlongapi()
-   // this.showbar();
+    this.GetTaiwanAlongapi();
+    // this.showbar();
     // this.GetTaiwanAccapi('臺南市')
 
     //this.GetTaiwanApi();
@@ -88,13 +88,13 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             this.Tai_None_Accident = res.data;
-              this.showbar(this.Tai_None_Accident)
+            this.showbar(this.Tai_None_Accident);
             //  this.Tai_None_Accident.filter((ans) => {
             //  this.Total_Tai_None_Arry.push(
             //     ans.rdname.split("、")[0] + "(" + ans.crossRoadArea + ")"
             //   );
             // });
-            console.log(this.Total_Tai_None_Arry)
+            console.log(this.Total_Tai_None_Arry);
           }
         })
         .catch((err) => {
@@ -175,14 +175,13 @@ export default {
         });
     },
     showbar(show_data) {
-       // 字串解析
+      // 字串解析
       var arry_road = [];
       show_data.filter((ans) => {
         arry_road.push({
           road_no: ans.no,
           road_name: ans.rdname.split("、")[0] + "(" + ans.crossRoadArea + ")",
-        }
-        );
+        });
       });
       var s = d3.select(".bar-data").append("svg").attr({
         width: 700,
@@ -210,7 +209,7 @@ export default {
           height: 30,
           x: 250,
           y: function (d) {
-            return (Number(d.no )-1)* 50;
+            return (Number(d.no) - 1) * 50;
           },
         })
         .transition()
@@ -245,13 +244,12 @@ export default {
           },
         })
         .tween("number", function (d) {
-          var i = d3.interpolateRound(0,  d.caseQty);
+          var i = d3.interpolateRound(0, d.caseQty);
           return function (t) {
             this.textContent = i(t);
           };
         });
       // -----標籤上面的名子------
-
 
       name
         .selectAll("text")
@@ -329,7 +327,6 @@ export default {
             this.h1 = n.properties.COUNTYNAME; // 換中文名
             this.h2 = n.properties.COUNTYENG; // 換英文名
 
-
             this.GetTaiwanAccapi(n.properties.COUNTYNAME);
             // 有 .active 存在，就移除 .active
             if (document.querySelector(".active")) {
@@ -377,7 +374,7 @@ body {
   color: white;
   position: absolute;
   right: 200px;
-  bottom:520px;
+  bottom: 520px;
   font-size: 50px;
 }
 .bar-title h1 {
