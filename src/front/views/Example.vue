@@ -1,6 +1,5 @@
 <template>
-<div class="page-top">
- 
+  <div class="page-top">
     <!-- Navigation-->
     <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
     <nav id="sidebar-wrapper">
@@ -226,7 +225,7 @@
         <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
       </div>
     </footer> -->
-   
+
     <!-- Scroll to Top Button-->
     <!-- <a class="scroll-to-top rounded" href="#page-top"
       ><i class="fas fa-angle-up"></i
@@ -236,27 +235,21 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script> -->
     <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
-
-</div>
+  </div>
 </template>
 
 <script>
 // 引入外部js檔
-import bootstrapExample from '../../../public/front_js/scripts'
-import '../../../public/front_css/styles.css'
+import bootstrapExample from "../../../public/front_js/scripts";
+import "../../../public/front_css/styles.css";
 export default {
   name: "Example",
   data() {
-    return {
-
-    };
+    return {};
   },
-  mounted(){
-    bootstrapExample.start()
+  mounted() {
+    bootstrapExample.start();
   },
-  methods:{
-    
-  }
-  
+  methods: {},
 };
 </script>

@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="inner text-center">
-      <div class="container ">
+      <div class="container">
         <div class="row">
           <div class="col-md-6 offset-md-3">
             <div class="card login my-4">
@@ -49,7 +49,7 @@
                     <input
                       type="password"
                       class="form-control"
-                       v-model="ACCOUNT_Data.AC_PWD"
+                      v-model="ACCOUNT_Data.AC_PWD"
                     />
                   </div>
                 </div>
@@ -67,29 +67,22 @@
                   </div>
                   <div class="col-sm-4">
                     <div class="col-form-label">
-                      <div v-html="ImageCode">
-                      </div>
+                      <div v-html="ImageCode"></div>
                     </div>
                   </div>
                 </div>
-                <div class="form-group form-check " >
+                <div class="form-group form-check">
                   <input
                     type="checkbox"
-                    class="form-check-input "
+                    class="form-check-input"
                     id="exampleCheck1"
-                    
                   />
                   <label class="form-check-label" for="exampleCheck1"
                     >記住我的帳號</label
                   >
-                  <div class="pull-right ">
-                    <button
-                     
-                      type="button"
-                      @click="show()"
-                      >忘記密碼</button
-                    >
-                  <!-- <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <div class="pull-right">
+                    <button type="button" @click="show()">忘記密碼</button>
+                    <!-- <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Launch demo modal
                 </a> -->
                   </div>
@@ -111,12 +104,23 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade " id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog ">
-            <div class="modal-content ">
-              <div class="modal-header ">
-                <h5 class="modal-title " id="exampleModalLabel" >忘記密碼</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div
+          class="modal fade"
+          id="exampleModalCenter"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">忘記密碼</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
               <div class="modal-body">
                 <form>
@@ -147,9 +151,20 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" 
-                @click="userForget()">寄送郵件</button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="userForget()"
+                >
+                  寄送郵件
+                </button>
               </div>
             </div>
           </div>
@@ -240,118 +255,119 @@
 // window.$ = $;
 export default {
   name: "Login",
-  data(){
-    return{
-      ImageCode:'',
-      ACCOUNT_Data:{
-        AC_USER:'',
-        AC_PWD:'',
-        imagepasscode:''
+  data() {
+    return {
+      ImageCode: "",
+      ACCOUNT_Data: {
+        AC_USER: "",
+        AC_PWD: "",
+        imagepasscode: "",
       },
-      Forget_ACCOUNT_Data:{
-       AC_USER:'',
-       AC_EMAIL:''
+      Forget_ACCOUNT_Data: {
+        AC_USER: "",
+        AC_EMAIL: "",
       },
-      errormsg:''
-    }
+      errormsg: "",
+    };
   },
-  mounted(){
-   
-    this.ImageCodeFunction()
+  mounted() {
+    this.ImageCodeFunction();
     //console.log("tettt")
     // this.showtest()
   },
-  methods:{
-    Test: function(){
-       console.log("ddd")
+  methods: {
+    Test: function () {
+      console.log("ddd");
     },
-     checkLoginData: async function(){
+    checkLoginData: async function () {
+      if (this.ACCOUNT_Data.AC_USER == "") {
+        alert("請輸入帳號");
+        return false;
+      }
+      if (this.ACCOUNT_Data.AC_PWD == "") {
+        alert("請輸入密碼");
+        return false;
+      }
+      if (this.ACCOUNT_Data.imagepasscode == "") {
+        alert("請輸入圖型驗證碼");
+        return false;
+      }
+    },
+    checkFrogetData: async function () {
+      if (this.Forget_ACCOUNT_Data.AC_EMAIL == "") {
+        alert("請輸入信箱");
+        return false;
+      }
+      if (this.Forget_ACCOUNT_Data.AC_USER == "") {
+        alert("請輸入帳號");
+        return false;
+      }
+    },
+    userLogin: async function () {
+      let data_result = await this.checkLoginData();
+      if (data_result == false) {
+        return false;
+      }
+      this.FunctionToken(this.loginFunction, this.ACCOUNT_Data);
+    },
+    show: function () {
+      var myModal = new bootstrap.Modal(
+        document.getElementById("exampleModalCenter"),
+        {
+          keyboard: false,
+        }
+      );
+      myModal.show();
+    },
+    userForget: async function () {
+      let data_result = await this.checkFrogetData();
+      if (data_result == false) {
+        return false;
+      }
 
-      if(this.ACCOUNT_Data.AC_USER == ''){
-           alert("請輸入帳號")
-           return false
-         }
-      if(this.ACCOUNT_Data.AC_PWD == ''){
-        alert("請輸入密碼")
-        return false
-      }
-      if(this.ACCOUNT_Data.imagepasscode == ''){
-         alert("請輸入圖型驗證碼")
-         return false
-      }
+      this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
     },
-    checkFrogetData: async function(){
-
-      
-      if(this.Forget_ACCOUNT_Data.AC_EMAIL == ''){
-        alert("請輸入信箱")
-        return false
-      }
-      if(this.Forget_ACCOUNT_Data.AC_USER == ''){
-           alert("請輸入帳號")
-           return false
-         }
-    },
-    userLogin: async function(){
-     let data_result = await this.checkLoginData()
-     if(data_result == false){
-       return false
-     }
-      this.FunctionToken(this.loginFunction,this.ACCOUNT_Data)
-    },
-    show: function(){
-      var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
-          keyboard: false 
-          })
-          myModal.show()
-   
-    },
-    userForget: async function(){
-      let data_result = await this.checkFrogetData()
-      if(data_result == false){
-        return false
-      }
-      
-      this.FunctionToken(this.forgetFunction,this.Forget_ACCOUNT_Data)
-    },
-    forgetFunction: function(data_in){
+    forgetFunction: function (data_in) {
       this.apiSendForget(data_in)
-      .then(res=>{
-        if(res.data.Status == true){
-          alert("郵件已寄出")
-          $('#exampleModalCenter').modal('hide');
-        }
-        if(res.data.Status == false){
-          alert("郵件或帳號輸入有誤，找不到使用者")
-          var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
-          keyboard: false 
-          })
-          myModal.hide()
-         // $('#exampleModalCenter').modal('hide');
-        }
-      })
-      .catch(err=>{
-        console.log(err+"錯誤")
-      })
+        .then((res) => {
+          if (res.data.Status == true) {
+            alert("郵件已寄出");
+            $("#exampleModalCenter").modal("hide");
+          }
+          if (res.data.Status == false) {
+            alert("郵件或帳號輸入有誤，找不到使用者");
+            var myModal = new bootstrap.Modal(
+              document.getElementById("exampleModalCenter"),
+              {
+                keyboard: false,
+              }
+            );
+            myModal.hide();
+            // $('#exampleModalCenter').modal('hide');
+          }
+        })
+        .catch((err) => {
+          console.log(err + "錯誤");
+        });
     },
-    loginFunction: function(data_in){
+    loginFunction: function (data_in) {
       this.apilogin(data_in)
-      .then(res=>{
-      if(res.data.Status == true){
-         alert("歡迎登入")
-         this.$router.push({path:'/'})
-         sessionStorage.setItem("TokenID",res.data.Data)
-      }
-      if(res.data.Status == false){
-        alert("登入資訊有誤")
-      }      
-      })
-      .catch(err=>{
-        console.log(err+"錯")
-      })
+        .then((res) => {
+          if (res.data.Status == true) {
+            alert("歡迎登入");
+            this.$router.push({ path: "/" });
+            sessionStorage.setItem("TokenID", res.data.Data);
+          }
+          if (res.data.Status == false) {
+            alert("登入資訊有誤");
+          }
+        })
+        .catch((err) => {
+          console.log(err + "錯");
+        });
     },
     // CryptionTestFunction: function(data){
-    
+
     //   console.log("一")
     //   this.apiToken(data_in)
     //   .then(res=>{
@@ -361,17 +377,17 @@ export default {
     //     console.log(err)
     //   })
     // },
-    ImageCodeFunction: function(){
+    ImageCodeFunction: function () {
       this.apigetImageCode()
-      .then(res=>{
-        if(res.data.Status == true){
-          this.ImageCode = res.data.Data
-        }
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    }
-  }
+        .then((res) => {
+          if (res.data.Status == true) {
+            this.ImageCode = res.data.Data;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>

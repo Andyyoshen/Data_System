@@ -1,4 +1,4 @@
-<template >
+<template>
   <div id="register">
     <div class="top-title bg-primary">
       <div class="container">
@@ -42,21 +42,19 @@
                 <div class="form-group">
                   <label for="staticName" class="col-form-label">帳號</label>
                   <div class="col-sm-5">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleInputName"
-                    v-model="ACCOUNT_Data.AC_USER"
-                  />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputName"
+                      v-model="ACCOUNT_Data.AC_USER"
+                    />
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="staticName" class="col-form-label"
-                    >密碼</label
-                  >
+                  <label for="staticName" class="col-form-label">密碼</label>
 
                   <input
-                     type="password"
+                    type="password"
                     class="form-control"
                     id="exampleInputID"
                     v-model="ACCOUNT_Data.AC_PWD"
@@ -71,7 +69,7 @@
                     type="password"
                     class="form-control"
                     id="inputPassword"
-                     v-model="AC_PWDCHECK"
+                    v-model="AC_PWDCHECK"
                   />
                 </div>
                 <!-- <div class="form-group">
@@ -111,18 +109,16 @@
                     >使用者信箱</label
                   >
 
-                  <input
-                    class="form-control"
-                     v-model="ACCOUNT_Data.AC_EMAIL"
-                  />
+                  <input class="form-control" v-model="ACCOUNT_Data.AC_EMAIL" />
                 </div>
-                
 
-                <button type="button"
-                 class="btn btn-primary btn-block" 
-                 @click="register()"
-                  >送出</button
+                <button
+                  type="button"
+                  class="btn btn-primary btn-block"
+                  @click="register()"
                 >
+                  送出
+                </button>
               </form>
             </div>
           </div>
@@ -137,24 +133,23 @@ export default {
   name: "Register",
   data() {
     return {
-      ACCOUNT_Data:{
-        AC_USER:'',
-        AC_PWD:'',
-        AC_USERNAME:'',
-        AC_EMAIL:'',
+      ACCOUNT_Data: {
+        AC_USER: "",
+        AC_PWD: "",
+        AC_USERNAME: "",
+        AC_EMAIL: "",
       },
-      AC_PWDCHECK:''
+      AC_PWDCHECK: "",
     };
   },
   mounted() {},
   methods: {
-    register:function(){
-      this.FunctionToken(this.registerFunction,this.ACCOUNT_Data)
+    register: function () {
+      this.FunctionToken(this.registerFunction, this.ACCOUNT_Data);
     },
-    registerFunction:function(data_in){
-      this.apiRegister(data_in)
-      
-    }
+    registerFunction: function (data_in) {
+      this.apiRegister(data_in);
+    },
   },
 };
 </script>

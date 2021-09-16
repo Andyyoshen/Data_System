@@ -8,12 +8,11 @@ import axios from "axios";
 // window.$ = $;
 //import comjs from '../../public/front_js/scripts.js'
 //import 'bootstrap';
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Vue.use(example_test);
-//Vue.prototype.$comjs = comjs;  
-Vue.prototype.$axios = axios ;
-
+//Vue.prototype.$comjs = comjs;
+Vue.prototype.$axios = axios;
 
 Vue.mixin(mixin);
 
