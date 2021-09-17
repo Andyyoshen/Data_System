@@ -78,7 +78,7 @@ export default {
     },
     GetTaiwanAlongapi() {
       this.$axios
-        .post("outapi/api/AccLocCbiAjax", {
+        .post("https://roadsafety.tw/api/AccLocCbiAjax", {
           Cyear: "110",
           Month: "ALL",
           City: "臺南市",
@@ -103,7 +103,7 @@ export default {
     },
     async GetTaiwanAccapi(datacity_in) {
       this.$axios
-        .post("outapi/api/AccLocCbiAjax", {
+        .post("https://roadsafety.tw/api/AccLocCbiAjax", {
           Cyear: "110",
           Month: "ALL",
           City: datacity_in,
