@@ -5,7 +5,7 @@ module.exports = {
  // publicPath: "./",
   //publicPath: "/Data_System",
   publicPath: process.env.NODE_ENV === "production"
-  ? '/Data_System'
+  ? './'
   : './',
   pages: {
     front: {
