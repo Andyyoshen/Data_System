@@ -23,7 +23,7 @@
               <a class="nav-link" href="#/signin">登入</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">註冊會員</a>
+              <a class="nav-link" href="#/register2">註冊會員</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
