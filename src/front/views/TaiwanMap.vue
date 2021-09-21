@@ -344,7 +344,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #svg {
   fill: #12213a;
 }

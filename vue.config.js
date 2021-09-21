@@ -1,9 +1,7 @@
 module.exports = {
   lintOnSave: false,
   filenameHashing: false,
-  publicPath: process.env.NODE_ENV === "production"
-  ? './'
-  : './',
+  publicPath: process.env.NODE_ENV === "production" ? "./" : "./",
   pages: {
     front: {
       entry: "src/front/main.js", // 配置入口js檔案
