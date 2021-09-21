@@ -20,7 +20,7 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">登入</a>
+              <a class="nav-link" href="#/signin">登入</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/register">註冊會員</a>
@@ -43,7 +43,7 @@
                 class="dropdown-menu dropdown-menu-lg-end"
                 aria-labelledby="navbarDropdown"
               >
-                <li><a class="dropdown-item" href="/login">登入</a></li>
+                <li><a class="dropdown-item" href="#/signin">登入</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>

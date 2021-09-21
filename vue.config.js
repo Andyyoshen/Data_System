@@ -1,9 +1,6 @@
 module.exports = {
   lintOnSave: false,
   filenameHashing: false,
-  // assetsDir: "static", // 放置生成的靜態資源 (js、css、img、fonts) 的目錄。default: ''
- // publicPath: "./",
-  //publicPath: "/Data_System",
   publicPath: process.env.NODE_ENV === "production"
   ? './'
   : './',

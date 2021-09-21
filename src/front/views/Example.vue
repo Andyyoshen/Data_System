@@ -17,7 +17,7 @@
       <div class="container px-4 px-lg-5 text-center">
         <h1 class="mb-1">數 據 平 台</h1>
         <h3 class="mb-5"><em>加 入 會 員 可 觀 看 最 新 即 時 數 據</em></h3>
-        <a class="btn btn-primary btn-xl" href="#about">了 解 更 多</a>
+        <a class="btn btn-primary btn-xl" href="#/">了 解 更 多</a>
       </div>
     </header>
     <!-- About-->
