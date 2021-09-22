@@ -33,7 +33,7 @@
 </header> -->
 
     <main>
-      <section class="py-5 text-center container" >
+      <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Album example</h1>
@@ -55,7 +55,13 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="../../../public/front_assets/TaiwnaMap.jpg" class="TWimg" width="100%" height="100%" fill="#55595c" />
+                <img
+                  src="../../../public/front_assets/TaiwnaMap.jpg"
+                  class="TWimg"
+                  width="100%"
+                  height="100%"
+                  fill="#55595c"
+                />
                 <!-- <svg
                   class="bd-placeholder-img card-img-top"
                   width="100%"
@@ -214,7 +220,7 @@ export default {
 };
 </script>
 <style scoped>
-section{
+section {
   background-image: url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
   background-size: cover;
 }

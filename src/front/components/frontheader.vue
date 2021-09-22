@@ -51,7 +51,6 @@
               </ul>
             </li>
 
-
             <li class="nav-item dropdown" v-if="MixnaccountData != null">
               <a
                 class="nav-link dropdown-toggle"
@@ -61,9 +60,10 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span class="fa fa-user mr-2" style title></span> {{MixnaccountData.AC_USERNAME}},你好
+                <span class="fa fa-user mr-2" style title></span>
+                {{ MixnaccountData.AC_USERNAME }},你好
               </a>
-              
+
               <ul
                 class="dropdown-menu dropdown-menu-lg-end"
                 aria-labelledby="navbarDropdown"
@@ -100,13 +100,11 @@ export default {
     };
   },
   mounted() {
-    if(this.TokenID != null){
-      
-       this.GetAccount()
+    if (this.TokenID != null) {
+      this.GetAccount();
     }
   },
   methods: {
-    
     search: function () {
       this.FunctionToken(this.searchFunction, this.ACCOUNT_Data);
     },

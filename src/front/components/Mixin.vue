@@ -5,14 +5,15 @@ export default {
     return {
       userRequest: this.$axios.create({ baseURL: "/api2" }),
       TokenID: "",
-      MixnaccountData:null,
+      MixnaccountData: null,
       apiToken: (data) => this.userRequest.post("/CryptionTest"),
       apigetImageCode: (data) => this.userRequest.post("/getImageCode"),
       apilogin: (data) => this.userRequest.post("/login", data),
       apiSelectUser: (data) => this.userRequest.post("/SelectUser", data),
       apiRegister: (data) => this.userRequest.post("/Register", data),
       apiSendForget: (data) => this.userRequest.post("/SendForget", data),
-      apiGetAccountInfo:(data) => this.userRequest.post("/GetAccountInfo", data),
+      apiGetAccountInfo: (data) =>
+        this.userRequest.post("/GetAccountInfo", data),
     };
   },
   mounted() {
@@ -41,21 +42,20 @@ export default {
           console.log("錯誤", err);
         });
     },
-    GetAccount:function(){
-      this.FunctionToken(this.GetMixnAccount,null) 
+    GetAccount: function () {
+      this.FunctionToken(this.GetMixnAccount, null);
     },
-   GetMixnAccount: async  function(data_in){
+    GetMixnAccount: async function (data_in) {
       this.apiGetAccountInfo(data_in)
-      .then(res=>{
-        if(res.data.Status == true){
-          this.MixnaccountData = res.data.Data[0]
-        }
-        
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    }
+        .then((res) => {
+          if (res.data.Status == true) {
+            this.MixnaccountData = res.data.Data[0];
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

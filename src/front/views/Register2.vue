@@ -105,9 +105,11 @@
           </div>
           <!-- form-group// -->
           <div class="form-group mb-3">
-            <button type="submit" 
-            class="w-100 btn btn-primary btn-block"
-            @click="register()">
+            <button
+              type="submit"
+              class="w-100 btn btn-primary btn-block"
+              @click="register()"
+            >
               Create Account
             </button>
           </div>
@@ -125,7 +127,7 @@ export default {
   name: "Register2",
   data() {
     return {
-       ACCOUNT_Data: {
+      ACCOUNT_Data: {
         AC_USER: "",
         AC_PWD: "",
         AC_USERNAME: "",
@@ -134,23 +136,20 @@ export default {
       AC_PWDCHECK: "",
     };
   },
-  mounted(){
-
-  },
-  methods:{
-     register: function () {
+  mounted() {},
+  methods: {
+    register: function () {
       this.FunctionToken(this.registerFunction, this.ACCOUNT_Data);
     },
     registerFunction: function (data_in) {
-      this.apiRegister(data_in)
-      .then(res=>{
-        if(res.data.Status == true){
-          alert("帳號註冊成功")
+      this.apiRegister(data_in).then((res) => {
+        if (res.data.Status == true) {
+          alert("帳號註冊成功");
           this.$router.push({ path: "/" });
         }
       });
     },
-  }
+  },
 };
 </script>
 <style scoped>

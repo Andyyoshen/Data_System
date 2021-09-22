@@ -148,10 +148,9 @@ export default {
       this.FunctionToken(this.registerFunction, this.ACCOUNT_Data);
     },
     registerFunction: function (data_in) {
-      this.apiRegister(data_in)
-        .then(res=>{
-          console.log(res)
-        })
+      this.apiRegister(data_in).then((res) => {
+        console.log(res);
+      });
     },
   },
 };
