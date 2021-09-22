@@ -7,11 +7,11 @@
       <article class="card-body mx-auto" style="max-width: 400px">
         <h4 class="card-title mt-3 text-center">Create Account</h4>
         <p class="text-center">Get started with your free account</p>
-        <p>
-          <a href="" class="btn btn-block btn-twitter">
+        <p >
+          <a href="" class="w-100 btn btn-block btn-twitter mb-2 ">
             <i class="fab fa-twitter"></i>   Login via Twitter</a
           >
-          <a href="" class="btn btn-block btn-facebook">
+          <a href="" class="w-100 btn btn-block btn-facebook mb-2">
             <i class="fab fa-facebook-f"></i>   Login via facebook</a
           >
         </p>
@@ -27,7 +27,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Username"
+                placeholder="用戶名"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
@@ -36,6 +36,20 @@
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
         <input name="" class="form-control" placeholder="Full name" type="text"> -->
+          </div>
+           <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa fa-car"></i></span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="帳號"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
           </div>
           <!-- form-group// -->
           <div class="form-group input-group">
@@ -46,68 +60,13 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Username"
+                placeholder="信箱"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
             </div>
           </div>
-          <!-- form-group// -->
-          <div class="form-group input-group">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-		        <span class="input-group-text" id="basic-addon1"> <i class="fa fa-phone"></i> </span>
-		    </div>
-              <button
-                class="btn btn-outline-secondary dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Text input with dropdown button"
-              />
-            </div>
 
-            <!-- <div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		</div>
-		<select class="custom-select" style="max-width: 120px;">
-		    <option selected="">+971</option>
-		    <option value="1">+972</option>
-		    <option value="2">+198</option>
-		    <option value="3">+701</option>
-		</select>
-    	<input name="" class="form-control" placeholder="Phone number" type="text"> -->
-          </div>
-          <!-- form-group// -->
-          <div class="form-group input-group">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-		</div>
-            <!-- <label class="input-group-text" for="inputGroupSelect02">Options</label> -->
-              <select class="form-select" id="inputGroupSelect02">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
           <!-- form-group end.// -->
           <div class="form-group input-group">
             <div class="input-group mb-3">
@@ -117,7 +76,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Username"
+                placeholder="密碼"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
@@ -132,15 +91,15 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Username"
+                placeholder="確認密碼"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
             </div>
           </div>
           <!-- form-group// -->
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">
+          <div class="form-group mb-3">
+            <button type="submit" class="w-100 btn btn-primary btn-block">
               Create Account
             </button>
           </div>
