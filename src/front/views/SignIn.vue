@@ -161,6 +161,8 @@ export default {
             this.DialogModal.hide();
             this.$router.push({ path: "/" });
             sessionStorage.setItem("TokenID", res.data.Data);
+            this.$router.go(0) // 刷新頁面
+            console.log("T1")
           }
           if (res.data.Status == false) {
             alert("登入資訊有誤");

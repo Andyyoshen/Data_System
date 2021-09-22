@@ -25,10 +25,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#/register2">註冊會員</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
+
+            <li class="nav-item dropdown" v-if="MixnaccountData == null">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -39,6 +37,7 @@
               >
                 <span class="fa fa-user mr-2" style title></span> 訪客,你好
               </a>
+
               <ul
                 class="dropdown-menu dropdown-menu-lg-end"
                 aria-labelledby="navbarDropdown"
@@ -48,6 +47,32 @@
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+
+
+            <li class="nav-item dropdown" v-if="MixnaccountData != null">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="fa fa-user mr-2" style title></span> {{MixnaccountData.AC_USERNAME}},你好
+              </a>
+              
+              <ul
+                class="dropdown-menu dropdown-menu-lg-end"
+                aria-labelledby="navbarDropdown"
+              >
+                <li><a class="dropdown-item" href="#/signin">登出</a></li>
+                <!-- <li><a class="dropdown-item" href="#">個人資料</a></li> -->
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">個人資料</a>
                 </li>
               </ul>
             </li>
@@ -74,8 +99,14 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+    if(this.TokenID != null){
+      
+       this.GetAccount()
+    }
+  },
   methods: {
+    
     search: function () {
       this.FunctionToken(this.searchFunction, this.ACCOUNT_Data);
     },

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
-    <frontheader></frontheader>
+    <!-- <frontheader></frontheader> -->
     <!-- <div id="nav"> 
        <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
