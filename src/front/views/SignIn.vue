@@ -38,7 +38,7 @@
               <input type="checkbox" value="remember-me" /> Remember me
             </label>
           </div>
-          <div><a href="#"> 忘記密碼</a></div>
+          <div><a href="#" @click="ShowForgetPasswordLog()"> 忘記密碼</a></div>
           <button
             class="w-100 btn btn-lg btn-primary"
             type="button"
@@ -50,7 +50,7 @@
         </form>
       </main>
     </div>
-    <!-- Modal -->
+    <!-- 圖型驗證Modal -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -113,6 +113,65 @@
         </div>
       </div>
     </div>
+    <!--忘記密碼Modal-->
+    <div
+      class="modal fade"
+      id="ForgetPasswordModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- <div class="modal-header"> -->
+           <button
+              type="button"
+              class="btn-close ms-2  mt-2"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <div  class="text-center mt-4">
+                <span class="ForgetTitle" style="font-weight: 900; font-size:25px ;">尋找你的帳戶。</span>
+            </div>
+          <!-- </div> -->
+          <div class="modal-body">
+            <form>
+              
+              <!-- <label for="recipient-name" class="col-form-label"> 請在下方輸入圖型驗證碼，以便驗證是否為機器人。</label> -->
+              <div class="form-floating mb-4">
+                <input
+                  type="name"
+                  class="form-control"
+                  id="floatingInput"
+                  v-model="Forget_ACCOUNT_Data.AC_USER"
+                  placeholder="name@example.com"
+                />
+                <label for="floatingInput">帳號 :</label>
+              </div>
+              <div class="form-floating mb-5">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="floatingInput"
+                 v-model="Forget_ACCOUNT_Data.AC_EMAIL"
+                  placeholder="name@example.com"
+                />
+                <label for="floatingInput">電子信箱 :</label>
+              </div>
+            </form>
+          </div>
+          <div class="">
+            <button
+              type="button"
+              class="w-75 ms-5 mb-3  btn btn-primary "
+              @click="userForget()"
+            >
+              搜尋
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -130,6 +189,10 @@ export default {
         AC_PWD: "",
         imagepasscode: "",
       },
+      Forget_ACCOUNT_Data: {
+        AC_USER: "",
+        AC_EMAIL: ""        
+      },
       DialogModal: "",
     };
   },
@@ -145,6 +208,54 @@ export default {
         }
       );
       this.DialogModal.show();
+    },
+    ShowForgetPasswordLog: function () {
+      this.DialogModal = new bootstrap.Modal(
+        document.getElementById("ForgetPasswordModal"),
+        {
+          keyboard: false,
+        }
+      );
+      this.DialogModal.show();
+    },
+    checkFrogetData: async function () {
+      if (this.Forget_ACCOUNT_Data.AC_EMAIL == "") {
+        alert("請輸入信箱");
+        return false;
+      }
+      if (this.Forget_ACCOUNT_Data.AC_USER == "") {
+        alert("請輸入帳號");
+        return false;
+      }
+    },
+    userForget: async function () {
+      let data_result = await this.checkFrogetData();
+      if (data_result == false) {
+        return false;
+      }
+
+      this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
+    },
+     forgetFunction: function (data_in) {
+      this.apiSendForget(data_in)
+        .then((res) => {
+          if (res.data.Status == true) {
+            alert("郵件已寄出");
+            this.Forget_ACCOUNT_Data.AC_USER = ""
+            this.Forget_ACCOUNT_Data.AC_EMAIL = ""
+            this.DialogModal.hide();
+            this.$router.push({path:"/ForgetPassword"})
+          }
+          if (res.data.Status == false) {
+            alert("郵件或帳號輸入有誤，找不到使用者");
+            this.Forget_ACCOUNT_Data.AC_USER = ""
+            this.Forget_ACCOUNT_Data.AC_EMAIL = ""
+            this.DialogModal.hide();
+          }
+        })
+        .catch((err) => {
+          console.log(err + "錯誤");
+        });
     },
     SaveAccount: async function () {
       let checkImagePassData_result = await this.checkImagePassData();

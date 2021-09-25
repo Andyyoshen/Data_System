@@ -93,14 +93,14 @@
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
                       >
-                        View
+                        觀看
                       </button>
-                      <button
+                      <!-- <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
                       >
                         Edit
-                      </button>
+                      </button> -->
                     </div>
                     <small class="text-muted">9 mins</small>
                   </div>

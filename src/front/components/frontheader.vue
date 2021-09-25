@@ -19,10 +19,10 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#/">首頁</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#/signin">登入</a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <li class="nav-item" >
               <a class="nav-link" href="#/register2">註冊會員</a>
             </li>
 
@@ -43,11 +43,11 @@
                 aria-labelledby="navbarDropdown"
               >
                 <li><a class="dropdown-item" href="#/signin">登入</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
-                </li>
+                </li> -->
               </ul>
             </li>
 
@@ -68,7 +68,7 @@
                 class="dropdown-menu dropdown-menu-lg-end"
                 aria-labelledby="navbarDropdown"
               >
-                <li><a class="dropdown-item" href="#/signin">登出</a></li>
+                <li><a class="dropdown-item" @click="SignOut()">登出</a></li>
                 <!-- <li><a class="dropdown-item" href="#">個人資料</a></li> -->
                 <li><hr class="dropdown-divider" /></li>
                 <li>
@@ -105,6 +105,11 @@ export default {
     }
   },
   methods: {
+    SignOut: function(){  
+      sessionStorage.clear()
+      this.MixnaccountData = null 
+      this.$router.push({path:'/'})
+    },
     search: function () {
       this.FunctionToken(this.searchFunction, this.ACCOUNT_Data);
     },

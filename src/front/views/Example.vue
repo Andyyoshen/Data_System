@@ -1,4 +1,5 @@
 <template>
+<div class="bootstrap-iso">
   <div class="page-top">
     <!-- Navigation-->
     <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
@@ -236,12 +237,14 @@
     <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
   </div>
+</div>
 </template>
 
 <script>
 // 引入外部js檔
 import bootstrapExample from "../../../public/front_js/scripts";
-import "../../../public/front_css/styles.css";
+// import "../../../public/front_css/styles.css";
+import "../../../public/front_css/bootstrap-iso.css";
 export default {
   name: "Example",
   data() {
@@ -253,3 +256,9 @@ export default {
   methods: {},
 };
 </script>
+<style  scoped>
+/* .hh{
+  @import url("../../../public/front_css/styles.css");
+} */
+  /* @import url("../../../public/front_css/styles.css" )  */
+</style>

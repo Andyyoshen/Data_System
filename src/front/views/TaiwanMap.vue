@@ -1,4 +1,5 @@
-<template>
+<template >
+<div id="MapAll">
   <div class="container">
     <div class="taiwan-bar">
       <div class="bar-title">
@@ -17,6 +18,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 <script>
 // import "../../../public/front_css/TaiwanMap.css"
@@ -344,7 +346,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style >
 #svg {
   fill: #12213a;
 }
@@ -362,13 +364,13 @@ path {
         stroke: #fff;
         stroke-width: 0.5px;
     }  */
-body {
+ #MapAll {
   background-color: #12213a;
 }
 .taiwan-bar {
   position: absolute;
-  right: 290px;
-  top: 100px;
+  right: 190px;
+  top: 200px;
 }
 .bar-title {
   color: white;
