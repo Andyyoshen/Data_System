@@ -1,127 +1,129 @@
 <template>
   <div class="container mt-5">
-      <div class="col-md-4 mx-auto">
-        <div class="card">
-          <div class="card-body mt-5">
-            <div class="text-center">
-              <div >
-              <h3 v-if="forgetcodecheck == 'No'" ><i class="fa fas fa-key fa-4x" ></i></h3>
-              </div>
-              <div v-if="forgetcodecheck == 'Yes'">
+    <div class="col-md-4 mx-auto">
+      <div class="card">
+        <div class="card-body mt-5">
+          <div class="text-center">
+            <div>
+              <h3 v-if="forgetcodecheck == 'No'">
+                <i class="fa fas fa-key fa-4x"></i>
+              </h3>
+            </div>
+            <div v-if="forgetcodecheck == 'Yes'">
               <h3><i class="fa fa-lock fa-4x"></i></h3>
-              </div>
-              <div v-if="forgetcodecheck == 'Finish'">
-              <h3><i class="fa fa-check fa-4x" ></i></h3>
-              </div>
-              <div class="mt-5" v-if="forgetcodecheck == 'No'">
-                <h2 class="text-center">郵件驗證碼。</h2>
-                <p class="mt-3">請 在 這 輸 入 您 收 到 的郵 件 驗 證 碼.</p>
-              </div>
+            </div>
+            <div v-if="forgetcodecheck == 'Finish'">
+              <h3><i class="fa fa-check fa-4x"></i></h3>
+            </div>
+            <div class="mt-5" v-if="forgetcodecheck == 'No'">
+              <h2 class="text-center">郵件驗證碼。</h2>
+              <p class="mt-3">請 在 這 輸 入 您 收 到 的郵 件 驗 證 碼.</p>
+            </div>
 
-              <div class="mt-3" v-if="forgetcodecheck == 'Yes'">
-                <h2 class="text-center">設定新的密碼。</h2>
-                <p class="mt-3">您 可 以 在 這 裡 重 新 設 定 密 碼.</p>
-              </div>
+            <div class="mt-3" v-if="forgetcodecheck == 'Yes'">
+              <h2 class="text-center">設定新的密碼。</h2>
+              <p class="mt-3">您 可 以 在 這 裡 重 新 設 定 密 碼.</p>
+            </div>
 
-              <div class="mt-3" v-if="forgetcodecheck == 'Finish'">
-                <h2 class="text-center">修改完成</h2>
-                <p class="mt-3">恭喜 ! 您已成功重新修改密碼.</p>
-              </div>
-              <div class="card-body">
-                <!---輸入驗證碼group----->
-                <form
-                  id="register-form"
-                  role="form"
-                  autocomplete="off"
-                  class="form"
-                  v-if="forgetcodecheck == 'No'"
-                >
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-text" id="basic-addon1"
+            <div class="mt-3" v-if="forgetcodecheck == 'Finish'">
+              <h2 class="text-center">修改完成</h2>
+              <p class="mt-3">恭喜 ! 您已成功重新修改密碼.</p>
+            </div>
+            <div class="card-body">
+              <!---輸入驗證碼group----->
+              <form
+                id="register-form"
+                role="form"
+                autocomplete="off"
+                class="form"
+                v-if="forgetcodecheck == 'No'"
+              >
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1"
                       ><i class="fa fa-lock"></i>
                     </span>
-                      <input
-                        placeholder="驗證碼"
-                        class="form-control"
-                        type="password"
-                        v-model="sendforgetverifycode.code"
-                      />
-                    </div>
+                    <input
+                      placeholder="驗證碼"
+                      class="form-control"
+                      type="password"
+                      v-model="sendforgetverifycode.code"
+                    />
                   </div>
-                  <div class="form-group mt-5 mb-2">
-                    <button
-                      class="btn btn-lg btn-primary btn-block w-100"
-                      type="button"
-                      @click="SendForgetVerify()"
-                    >
-                      確認
-                    </button>
-                  </div>
+                </div>
+                <div class="form-group mt-5 mb-2">
+                  <button
+                    class="btn btn-lg btn-primary btn-block w-100"
+                    type="button"
+                    @click="SendForgetVerify()"
+                  >
+                    確認
+                  </button>
+                </div>
 
-                  <input
-                    type="hidden"
-                    class="hide"
-                    name="token"
-                    id="token"
-                    value=""
-                  />
-                </form>
-                <!---更改密碼group----->
-                <form
-                  id="register-form"
-                  role="form"
-                  autocomplete="off"
-                  class="form"
-                  v-if="forgetcodecheck == 'Yes'"
-                >
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-text" id="basic-addon1"
-                        ><i class="fa fa-lock"></i>
-                      </span>
-                      <input
-                        placeholder="密碼"
-                        class="form-control"
-                        type="password"
-                        v-model="newPassWord.newpwd"
-                      />
-                    </div>
-                    <div class="input-group mt-3">
-                      <span class="input-group-text" id="basic-addon1"
-                        ><i class="fa fa-lock"></i>
-                      </span> 
-                      <input
-                        placeholder="確認密碼"
-                        class="form-control"
-                        type="password"
-                        v-model="checknewpwd"
-                      />
-                    </div>
+                <input
+                  type="hidden"
+                  class="hide"
+                  name="token"
+                  id="token"
+                  value=""
+                />
+              </form>
+              <!---更改密碼group----->
+              <form
+                id="register-form"
+                role="form"
+                autocomplete="off"
+                class="form"
+                v-if="forgetcodecheck == 'Yes'"
+              >
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1"
+                      ><i class="fa fa-lock"></i>
+                    </span>
+                    <input
+                      placeholder="密碼"
+                      class="form-control"
+                      type="password"
+                      v-model="newPassWord.newpwd"
+                    />
                   </div>
-                  <div class="form-group mt-5 mb-2">
-                    <button
-                      class="btn btn-lg btn-primary btn-block w-100"
-                      type="button"
-                      @click="changePassword()"
-                    >
-                      確認
-                    </button>
+                  <div class="input-group mt-3">
+                    <span class="input-group-text" id="basic-addon1"
+                      ><i class="fa fa-lock"></i>
+                    </span>
+                    <input
+                      placeholder="確認密碼"
+                      class="form-control"
+                      type="password"
+                      v-model="checknewpwd"
+                    />
                   </div>
+                </div>
+                <div class="form-group mt-5 mb-2">
+                  <button
+                    class="btn btn-lg btn-primary btn-block w-100"
+                    type="button"
+                    @click="changePassword()"
+                  >
+                    確認
+                  </button>
+                </div>
 
-                  <input
-                    type="hidden"
-                    class="hide"
-                    name="token"
-                    id="token"
-                    value=""
-                  />
-                </form>
-              </div>
+                <input
+                  type="hidden"
+                  class="hide"
+                  name="token"
+                  id="token"
+                  value=""
+                />
+              </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </template>
 <script>

@@ -130,16 +130,15 @@
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
-             <span class="ms-5"></span>
+            <span class="ms-5"></span>
             <span class="ms-5"></span>
             <span class="ms-5"></span>
             <span class="ms-5"><i class="fab fa-apple fa-2x"></i></span>
-           <!--
+            <!--
               <span
                 class="ForgetTitle text-center"
                 style="font-weight: 900; font-size: 25px"
                 >尋找你的帳戶。</span > -->
-              
           </div>
           <div class="text-center mt-4">
             <span class="ForgetTitle" style="font-weight: 900; font-size: 25px"
