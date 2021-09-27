@@ -123,20 +123,32 @@
     >
       <div class="modal-dialog">
         <div class="modal-content">
-          <!-- <div class="modal-header"> -->
-           <button
+          <div class="mt-2">
+            <button
               type="button"
-              class="btn-close ms-2  mt-2"
+              class="btn-close ms-2 mt-2"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
-            <div  class="text-center mt-4">
-                <span class="ForgetTitle" style="font-weight: 900; font-size:25px ;">尋找你的帳戶。</span>
-            </div>
-          <!-- </div> -->
-          <div class="modal-body">
-            <form>
+             <span class="ms-5"></span>
+            <span class="ms-5"></span>
+            <span class="ms-5"></span>
+            <span class="ms-5"><i class="fab fa-apple fa-2x"></i></span>
+           <!--
+              <span
+                class="ForgetTitle text-center"
+                style="font-weight: 900; font-size: 25px"
+                >尋找你的帳戶。</span > -->
               
+          </div>
+          <div class="text-center mt-4">
+            <span class="ForgetTitle" style="font-weight: 900; font-size: 25px"
+              >尋找你的帳戶。</span
+            >
+          </div>
+          <!-- </div> -->
+          <div class="modal-body mt-3">
+            <form>
               <!-- <label for="recipient-name" class="col-form-label"> 請在下方輸入圖型驗證碼，以便驗證是否為機器人。</label> -->
               <div class="form-floating mb-4">
                 <input
@@ -153,7 +165,7 @@
                   type="email"
                   class="form-control"
                   id="floatingInput"
-                 v-model="Forget_ACCOUNT_Data.AC_EMAIL"
+                  v-model="Forget_ACCOUNT_Data.AC_EMAIL"
                   placeholder="name@example.com"
                 />
                 <label for="floatingInput">電子信箱 :</label>
@@ -163,7 +175,7 @@
           <div class="">
             <button
               type="button"
-              class="w-75 ms-5 mb-3  btn btn-primary "
+              class="w-75 ms-5 mb-3 btn btn-primary"
               @click="userForget()"
             >
               搜尋
@@ -191,7 +203,7 @@ export default {
       },
       Forget_ACCOUNT_Data: {
         AC_USER: "",
-        AC_EMAIL: ""        
+        AC_EMAIL: "",
       },
       DialogModal: "",
     };
@@ -236,20 +248,20 @@ export default {
 
       this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
     },
-     forgetFunction: function (data_in) {
+    forgetFunction: function (data_in) {
       this.apiSendForget(data_in)
         .then((res) => {
           if (res.data.Status == true) {
             alert("郵件已寄出");
-            this.Forget_ACCOUNT_Data.AC_USER = ""
-            this.Forget_ACCOUNT_Data.AC_EMAIL = ""
+            this.Forget_ACCOUNT_Data.AC_USER = "";
+            this.Forget_ACCOUNT_Data.AC_EMAIL = "";
             this.DialogModal.hide();
-            this.$router.push({path:"/ForgetPassword"})
+            this.$router.push({ path: "/ForgetPassword" });
           }
           if (res.data.Status == false) {
             alert("郵件或帳號輸入有誤，找不到使用者");
-            this.Forget_ACCOUNT_Data.AC_USER = ""
-            this.Forget_ACCOUNT_Data.AC_EMAIL = ""
+            this.Forget_ACCOUNT_Data.AC_USER = "";
+            this.Forget_ACCOUNT_Data.AC_EMAIL = "";
             this.DialogModal.hide();
           }
         })

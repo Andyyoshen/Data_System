@@ -1,24 +1,24 @@
-<template >
-<div id="MapAll">
-  <div class="container">
-    <div class="taiwan-bar">
-      <div class="bar-title">
-        <h1>{{ h1 }}</h1>
-        <h2>{{ h2 }}</h2>
+<template>
+  <div id="MapAll">
+    <div class="container">
+      <div class="taiwan-bar">
+        <div class="bar-title">
+          <h1>{{ h1 }}</h1>
+          <h2>{{ h2 }}</h2>
+        </div>
+        <div class="bar-data"></div>
       </div>
-      <div class="bar-data"></div>
-    </div>
-    <div class="taiwan-map" ref="map">
-      <div id="map">
-        <svg
-          id="svg"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid meet"
-        ></svg>
+      <div class="taiwan-map" ref="map">
+        <div id="map">
+          <svg
+            id="svg"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+          ></svg>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 <script>
 // import "../../../public/front_css/TaiwanMap.css"
@@ -346,7 +346,7 @@ export default {
   },
 };
 </script>
-<style >
+<style>
 #svg {
   fill: #12213a;
 }
@@ -364,7 +364,7 @@ path {
         stroke: #fff;
         stroke-width: 0.5px;
     }  */
- #MapAll {
+#MapAll {
   background-color: #12213a;
 }
 .taiwan-bar {

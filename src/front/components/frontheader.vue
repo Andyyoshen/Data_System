@@ -22,7 +22,7 @@
             <!-- <li class="nav-item">
               <a class="nav-link" href="#/signin">登入</a>
             </li> -->
-            <li class="nav-item" >
+            <li class="nav-item">
               <a class="nav-link" href="#/register2">註冊會員</a>
             </li>
 
@@ -105,10 +105,10 @@ export default {
     }
   },
   methods: {
-    SignOut: function(){  
-      sessionStorage.clear()
-      this.MixnaccountData = null 
-      this.$router.push({path:'/'})
+    SignOut: function () {
+      sessionStorage.clear();
+      this.MixnaccountData = null;
+      this.$router.push({ path: "/" });
     },
     search: function () {
       this.FunctionToken(this.searchFunction, this.ACCOUNT_Data);

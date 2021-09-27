@@ -12,8 +12,9 @@ export default {
       apiSelectUser: (data) => this.userRequest.post("/SelectUser", data),
       apiRegister: (data) => this.userRequest.post("/Register", data),
       apiSendForget: (data) => this.userRequest.post("/SendForget", data),
-      apiGetAccountInfo: (data) =>this.userRequest.post("/GetAccountInfo", data),
-      apiGetForget: (data) =>this.userRequest.post("/GetForget", data),
+      apiGetAccountInfo: (data) =>
+        this.userRequest.post("/GetAccountInfo", data),
+      apiGetForget: (data) => this.userRequest.post("/GetForget", data),
     };
   },
   mounted() {

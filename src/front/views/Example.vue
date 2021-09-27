@@ -1,28 +1,28 @@
 <template>
-<div class="bootstrap-iso">
-  <div class="page-top">
-    <!-- Navigation-->
-    <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
-    <nav id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
-        <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-        <li class="sidebar-nav-item"><a href="#about">About</a></li>
-        <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-        <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-        <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <!-- Header-->
-    <header class="masthead d-flex align-items-center">
-      <div class="container px-4 px-lg-5 text-center">
-        <h1 class="mb-1">數 據 平 台</h1>
-        <h3 class="mb-5"><em>加 入 會 員 可 觀 看 最 新 即 時 數 據</em></h3>
-        <a class="btn btn-primary btn-xl" href="#/">了 解 更 多</a>
-      </div>
-    </header>
-    <!-- About-->
-    <!-- <section class="content-section bg-light" id="about">
+  <div class="bootstrap-iso">
+    <div class="page-top">
+      <!-- Navigation-->
+      <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
+      <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
+          <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+          <li class="sidebar-nav-item"><a href="#about">About</a></li>
+          <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+          <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
+          <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Header-->
+      <header class="masthead d-flex align-items-center">
+        <div class="container px-4 px-lg-5 text-center">
+          <h1 class="mb-1">數 據 平 台</h1>
+          <h3 class="mb-5"><em>加 入 會 員 可 觀 看 最 新 即 時 數 據</em></h3>
+          <a class="btn btn-primary btn-xl" href="#/">了 解 更 多</a>
+        </div>
+      </header>
+      <!-- About-->
+      <!-- <section class="content-section bg-light" id="about">
       <div class="container px-4 px-lg-5 text-center">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-10">
@@ -40,8 +40,8 @@
         </div>
       </div>
     </section> -->
-    <!-- Services-->
-    <!-- <section
+      <!-- Services-->
+      <!-- <section
       class="content-section bg-primary text-white text-center"
       id="services"
     >
@@ -86,8 +86,8 @@
         </div>
       </div>
     </section> -->
-    <!-- Callout-->
-    <!-- <section class="callout">
+      <!-- Callout-->
+      <!-- <section class="callout">
       <div class="container px-4 px-lg-5 text-center">
         <h2 class="mx-auto mb-5">
           Welcome to
@@ -101,8 +101,8 @@
         >
       </div>
     </section> -->
-    <!-- Portfolio-->
-    <!-- <section class="content-section" id="portfolio">
+      <!-- Portfolio-->
+      <!-- <section class="content-section" id="portfolio">
       <div class="container px-4 px-lg-5">
         <div class="content-section-heading text-center">
           <h3 class="text-secondary mb-0">Portfolio</h3>
@@ -183,16 +183,16 @@
         </div>
       </div>
     </section> -->
-    <!-- Call to Action-->
-    <!-- <section class="content-section bg-primary text-white">
+      <!-- Call to Action-->
+      <!-- <section class="content-section bg-primary text-white">
       <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-4">The buttons below are impossible to resist...</h2>
         <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
         <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
       </div>
     </section> -->
-    <!-- Map-->
-    <!-- <div class="map" id="contact">
+      <!-- Map-->
+      <!-- <div class="map" id="contact">
       <iframe
         src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"
       ></iframe>
@@ -203,8 +203,8 @@
         ></a
       ></small>
     </div> -->
-    <!-- Footer-->
-    <!-- <footer class="footer text-center">
+      <!-- Footer-->
+      <!-- <footer class="footer text-center">
       <div class="container px-4 px-lg-5">
         <ul class="list-inline mb-5">
           <li class="list-inline-item">
@@ -227,17 +227,17 @@
       </div>
     </footer> -->
 
-    <!-- Scroll to Top Button-->
-    <!-- <a class="scroll-to-top rounded" href="#page-top"
+      <!-- Scroll to Top Button-->
+      <!-- <a class="scroll-to-top rounded" href="#page-top"
       ><i class="fas fa-angle-up"></i
     ></a> -->
 
-    <!-- Bootstrap core JS-->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script> -->
-    <!-- Core theme JS-->
-    <!-- <script src="js/scripts.js"></script> -->
+      <!-- Bootstrap core JS-->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script> -->
+      <!-- Core theme JS-->
+      <!-- <script src="js/scripts.js"></script> -->
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -256,9 +256,9 @@ export default {
   methods: {},
 };
 </script>
-<style  scoped>
+<style scoped>
 /* .hh{
   @import url("../../../public/front_css/styles.css");
 } */
-  /* @import url("../../../public/front_css/styles.css" )  */
+/* @import url("../../../public/front_css/styles.css" )  */
 </style>
