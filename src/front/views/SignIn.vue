@@ -75,11 +75,10 @@
                 請在下方輸入圖型驗證碼，以便驗證是否為機器人。
               </div>
               <!-- <label for="recipient-name" class="col-form-label"> 請在下方輸入圖型驗證碼，以便驗證是否為機器人。</label> -->
-              <div class="form-floating mb-3">
+              <div class="form-floating mb-3 mt-3">
                 <input
                   type="email"
-                  class="form-control"
-                  id="floatingInput"
+                  class="form-control"                 
                   v-model="ACCOUNT_Data.imagepasscode"
                   placeholder="name@example.com"
                 />
@@ -99,15 +98,16 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
+              @click="CloseVerify()"
             >
-              Close
+              關閉
             </button>
             <button
               type="button"
               class="btn btn-primary"
               @click="SaveAccount()"
             >
-              Save changes
+              驗證
             </button>
           </div>
         </div>
@@ -179,6 +179,16 @@
             >
               搜尋
             </button>
+            <!-- <button
+              type="button"
+              class=" btn-primary"
+              @click="showAlert({
+                title:'成功',
+                text:'已寄出郵件',
+                icon:'success',
+                confirmButtonColor: '#3085d6'})">
+             測事
+            </button> -->
           </div>
         </div>
       </div>
@@ -211,6 +221,16 @@ export default {
     this.ImageCodeFunction();
   },
   methods: {
+    CloseVerify(){
+      this.ImageCodeFunction();
+      this.ACCOUNT_Data.AC_USER = ""
+      this.ACCOUNT_Data.AC_PWD = ""
+      this.ACCOUNT_Data.imagepasscode = ""
+    },
+    showAlert(object) {
+      // Use sweetalert2
+      this.$swal(object);
+    },
     Showdialog: function () {
       this.DialogModal = new bootstrap.Modal(
         document.getElementById("exampleModal"),
@@ -247,11 +267,17 @@ export default {
 
       this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
     },
-    forgetFunction: function (data_in) {
+    forgetFunction: function (data_in) { //要調整搜尋之後直接跑流程,不要等respons
       this.apiSendForget(data_in)
         .then((res) => {
           if (res.data.Status == true) {
-            alert("郵件已寄出");
+           // alert("已寄出")
+           this.showAlert({
+              title: "成功",
+              text: "已寄出郵件",
+              icon: "success",
+              confirmButtonColor: "#3085d6",
+            });
             this.Forget_ACCOUNT_Data.AC_USER = "";
             this.Forget_ACCOUNT_Data.AC_EMAIL = "";
             this.DialogModal.hide();
@@ -289,6 +315,11 @@ export default {
           if (res.data.Status == false) {
             alert("登入資訊有誤");
             this.DialogModal.hide();
+            this.ImageCodeFunction();
+            this.ACCOUNT_Data.AC_USER = ""
+            this.ACCOUNT_Data.AC_PWD = ""
+            this.ACCOUNT_Data.imagepasscode = ""
+            
           }
         })
         .catch((err) => {

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button
@@ -35,7 +35,10 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span class="fa fa-user mr-2" style title></span> 訪客,你好
+                <!-- <svg ></svg> -->
+                <img class="mb-1" src="../../../public/front_assets/diamond2.svg" height="20" >
+                <!-- <span class="fa fa-user mr-2" style title></span> 訪客,你好 -->
+                <span></span> 訪客,你好
               </a>
 
               <ul
@@ -109,6 +112,8 @@ export default {
       sessionStorage.clear();
       this.MixnaccountData = null;
       this.$router.push({ path: "/" });
+      this.$router.go(0)
+      
     },
     search: function () {
       this.FunctionToken(this.searchFunction, this.ACCOUNT_Data);

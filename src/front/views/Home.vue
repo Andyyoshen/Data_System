@@ -1,39 +1,7 @@
 <template>
   <div class="home">
-    <!-- <header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
-</header> -->
-
     <main>
-      <section class="py-5 text-center container">
+      <div id="Home_Title" class="py-5 text-center container-fluid">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Album example</h1>
@@ -48,7 +16,7 @@
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
       <div class="album py-5 bg-light">
         <div class="container">
@@ -92,6 +60,7 @@
                       <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
+                        @click="LookTaiwanMapWeb()"
                       >
                         觀看
                       </button>
@@ -107,24 +76,53 @@
                 </div>
               </div>
             </div>
-            <div class="col">
+
+
+            <div class="col"
+             v-for="(value,index) in Image_path"
+             :key="index"
+             >
               <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
+               
+                <img
+                  :src="value.path"
+                  class="TWimg"
+                  width="100%"  
+                  height="100%"
+                  fill="#55595c"
+                />
+                <div class="card-body">
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        @click="LookDogImage(value.Img_number)"
+                      >
+                        觀看
+                      </button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col">
+              <div class="card shadow-sm">
+                   <img
+                  src="../../../public/front_assets/Dog2.jpg"
+                  class="TWimg"
                   width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
+                  height="100%"
+                  fill="#55595c"
+                />
 
                 <div class="card-body">
                   <p class="card-text">
@@ -139,68 +137,16 @@
                       <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
+                        @click="LookDogImage()"
                       >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
+                        觀看
                       </button>
                     </div>
                     <small class="text-muted">9 mins</small>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -214,16 +160,95 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
+  data(){
+    return{
+      Image_data:{
+        Img_number:''
+      },
+      Image_path:[
+        {
+          path:require("../../../public/front_assets/Dog.jpg"),
+          Img_number:'Test01'
+        },
+        {
+          path:require("../../../public/front_assets/Dog2.jpg"),
+          Img_number:'Test02'
+        }
+      ],
+      // Image_path2:[
+      //   {
+      //     path
+      //   }
+      // ]
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    LookDogImage:async function(data){
+      this.Image_data.Img_number = data
+     this.FunctionToken(this.GetapiDogViewCard,this.Image_data)
+    },
+
+    GetapiDogViewCard: function(data_in){
+      this.apiDogViewCard(data_in)
+      .then(res=>{
+        
+        if(res.data.Status == true){
+         console.log(res)
+         window.open(res.data.Data) //暫時
+        }
+
+        if(res.data.Status == false){
+         return alert("權限不足")
+        }
+        if(res.data.Status == 505){
+          return alert("請聯絡管理員")
+        }
+      })
+      .catch(err=>{
+        alert("錯誤")
+      })
+    },
+
+    LookTaiwanMapWeb:async function(){
+
+      this.FunctionToken(this.GetapiViewCard)
+    },
+    GetapiViewCard: function(data_in){
+      this.apiViewCard(data_in)
+      .then(res=>{
+        if(res.data.Status == true)
+         this.$router.push({path:res.data.Data})
+       if(res.data.Status == false)
+        return  alert("無權訪問")
+        
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    }
+
+  },
+
   components: {
     HelloWorld,
   },
 };
 </script>
 <style scoped>
-section {
+#Home_Title {
   background-image: url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
+  
+  background-position: center;
   background-size: cover;
 }
+.TWimg{         /*空置圖片縮放比例*/
+  width: 100%;
+  height: 50vh;
+  object-fit: fill;
+  }
 /* #TWimg{
   background-image: url("../../../public/front_assets/TaiwnaMap.jpg");
 } */

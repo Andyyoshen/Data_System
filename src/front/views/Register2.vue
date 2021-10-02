@@ -147,6 +147,13 @@ export default {
           alert("帳號註冊成功");
           this.$router.push({ path: "/" });
         }
+        else{
+          alert("發生錯誤請聯絡管理員")
+        }
+      })
+      .catch(err=>{
+        console.log(err)
+        alert("發生錯誤請聯絡管理員")
       });
     },
   },

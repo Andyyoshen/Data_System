@@ -15,6 +15,8 @@ export default {
       apiGetAccountInfo: (data) =>
         this.userRequest.post("/GetAccountInfo", data),
       apiGetForget: (data) => this.userRequest.post("/GetForget", data),
+      apiViewCard: (data) => this.userRequest.post("/ViewCard", data),
+      apiDogViewCard:(data)=>this.userRequest.post("/DogViewCard",data),
     };
   },
   mounted() {
