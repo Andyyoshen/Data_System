@@ -1,9 +1,9 @@
 <template>
-  <div class="bootstrap-iso">
+  <div id="Example_id" class="bootstrap-iso">
     <div class="page-top">
       <!-- Navigation-->
       <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
-      <nav id="sidebar-wrapper">
+      <!-- <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
           <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
@@ -12,15 +12,15 @@
           <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
           <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
         </ul>
-      </nav>
+      </nav> -->
       <!-- Header-->
-      <header class="masthead d-flex align-items-center">
+      <div class="masthead d-flex align-items-center">
         <div class="container px-4 px-lg-5 text-center">
           <h1 class="mb-1">數 據 平 台</h1>
           <h3 class="mb-5"><em>加 入 會 員 可 觀 看 最 新 即 時 數 據</em></h3>
           <a class="btn btn-primary btn-xl" href="#/">了 解 更 多</a>
         </div>
-      </header>
+      </div>
       <!-- About-->
       <!-- <section class="content-section bg-light" id="about">
       <div class="container px-4 px-lg-5 text-center">
@@ -257,6 +257,9 @@ export default {
 };
 </script>
 <style scoped>
+#Example_id{
+  height: 100vh;
+}
 /* .hh{
   @import url("../../../public/front_css/styles.css");
 } */

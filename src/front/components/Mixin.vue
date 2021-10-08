@@ -16,7 +16,10 @@ export default {
         this.userRequest.post("/GetAccountInfo", data),
       apiGetForget: (data) => this.userRequest.post("/GetForget", data),
       apiViewCard: (data) => this.userRequest.post("/ViewCard", data),
-      apiDogViewCard:(data)=>this.userRequest.post("/DogViewCard",data),
+      apiDogViewCard: (data) => this.userRequest.post("/DogViewCard", data),
+      apiSearchAccount: (data) => this.userRequest.post("/SearchAccount", data),
+      apiCheckAccountEmail:(data) => this.userRequest.post("/CheckAccountEmail", data),
+      apiCheckAccountUserName:(data) => this.userRequest.post("/CheckAccountUserName", data),
     };
   },
   mounted() {
@@ -25,6 +28,20 @@ export default {
   methods: {
     showtest: function (a) {
       alert(a);
+    },
+    showAlertforFunctionTokenEorr(object) {
+      // Use sweetalert2
+      const showToast = this.$swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            onOpen: toast => {
+              toast.addEventListener('mouseenter', this.$swal.stopTimer)
+              toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+            }
+          });
+     return showToast
     },
     FunctionToken: function (EXfunction, data_in) {
       console.log("二");
@@ -42,6 +59,11 @@ export default {
           }
         })
         .catch((err) => {
+         
+         this.showAlertforFunctionTokenEorr().fire({
+          icon: 'error',
+           title: '權線解析失敗，請聯絡管理員'
+        })
           console.log("錯誤", err);
         });
     },

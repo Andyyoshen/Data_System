@@ -78,7 +78,7 @@
               <div class="form-floating mb-3 mt-3">
                 <input
                   type="email"
-                  class="form-control"                 
+                  class="form-control"
                   v-model="ACCOUNT_Data.imagepasscode"
                   placeholder="name@example.com"
                 />
@@ -221,11 +221,11 @@ export default {
     this.ImageCodeFunction();
   },
   methods: {
-    CloseVerify(){
+    CloseVerify() {
       this.ImageCodeFunction();
-      this.ACCOUNT_Data.AC_USER = ""
-      this.ACCOUNT_Data.AC_PWD = ""
-      this.ACCOUNT_Data.imagepasscode = ""
+      this.ACCOUNT_Data.AC_USER = "";
+      this.ACCOUNT_Data.AC_PWD = "";
+      this.ACCOUNT_Data.imagepasscode = "";
     },
     showAlert(object) {
       // Use sweetalert2
@@ -267,12 +267,13 @@ export default {
 
       this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
     },
-    forgetFunction: function (data_in) { //要調整搜尋之後直接跑流程,不要等respons
+    forgetFunction: function (data_in) {
+      //要調整搜尋之後直接跑流程,不要等respons
       this.apiSendForget(data_in)
         .then((res) => {
           if (res.data.Status == true) {
-           // alert("已寄出")
-           this.showAlert({
+            // alert("已寄出")
+            this.showAlert({
               title: "成功",
               text: "已寄出郵件",
               icon: "success",
@@ -303,23 +304,27 @@ export default {
     },
     loginFunction: function (data_in) {
       this.apilogin(data_in)
-        .then((res) => {
+        .then(async (res) => {
           if (res.data.Status == true) {
-            alert("歡迎登入");
-            this.DialogModal.hide();
-            this.$router.push({ path: "/" });
-            sessionStorage.setItem("TokenID", res.data.Data);
-            this.$router.go(0); // 刷新頁面
+            await  this.showAlert({
+              title: "成功",
+              text: "歡迎登入",
+              icon: "success",
+              confirmButtonColor: "#3085d6",
+            });
+          await  this.DialogModal.hide();
+          await  this.$router.push({ path: "/" });
+          await  sessionStorage.setItem("TokenID", res.data.Data);
+          await  this.$router.go(0); // 刷新頁面
             console.log("T1");
           }
           if (res.data.Status == false) {
             alert("登入資訊有誤");
             this.DialogModal.hide();
             this.ImageCodeFunction();
-            this.ACCOUNT_Data.AC_USER = ""
-            this.ACCOUNT_Data.AC_PWD = ""
-            this.ACCOUNT_Data.imagepasscode = ""
-            
+            this.ACCOUNT_Data.AC_USER = "";
+            this.ACCOUNT_Data.AC_PWD = "";
+            this.ACCOUNT_Data.imagepasscode = "";
           }
         })
         .catch((err) => {
@@ -359,6 +364,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    showAlert(object) {
+      // Use sweetalert2
+     return this.$swal(object);
     },
   },
 };

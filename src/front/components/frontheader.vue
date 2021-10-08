@@ -35,10 +35,8 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <!-- <svg ></svg> -->
-                <img class="mb-1" src="../../../public/front_assets/diamond2.svg" height="20" >
-                <!-- <span class="fa fa-user mr-2" style title></span> 訪客,你好 -->
-                <span></span> 訪客,你好
+                <span class="fa fa-user mr-2" style title></span> 訪客,你好 
+                
               </a>
 
               <ul
@@ -46,14 +44,9 @@
                 aria-labelledby="navbarDropdown"
               >
                 <li><a class="dropdown-item" href="#/signin">登入</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li> -->
               </ul>
             </li>
-
+            <!--登入後的樣式-->
             <li class="nav-item dropdown" v-if="MixnaccountData != null">
               <a
                 class="nav-link dropdown-toggle"
@@ -63,7 +56,26 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span class="fa fa-user mr-2" style title></span>
+               
+                <img
+                  class="mb-1"
+                  src="../../../public/front_assets/diamond2.svg"
+                  height="20"
+                  v-if="MixnaccountData.AI_Status == 'Diamond'"
+                />
+                <img
+                  class="mb-1"
+                  src="../../../public/front_assets/bronze-medal.png"
+                  height="20"
+                  v-if="MixnaccountData.AI_Status == 'copper'"
+                />
+                <img
+                  class="mb-1"
+                  src="../../../public/front_assets/crown.png"
+                  height="20"
+                  v-if="MixnaccountData.AI_Status == 'crown'"
+                />
+                <!-- <span class="fa fa-user mr-2" style title></span> -->
                 {{ MixnaccountData.AC_USERNAME }},你好
               </a>
 
@@ -108,11 +120,28 @@ export default {
     }
   },
   methods: {
-    SignOut: function () {
-      sessionStorage.clear();
-      this.MixnaccountData = null;
-      this.$router.push({ path: "/" });
-      this.$router.go(0)
+    showAlert(object) {
+      // Use sweetalert2
+     return this.$swal(object);
+    },
+    SignOut: async  function () {
+    const checkSignOut =  await  this.showAlert({
+              title: '您確定嗎？',
+              text: '登出後無法觀看圖片！',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              cancelButtonText: '取消',
+              confirmButtonText: '登出'
+            });
+            
+            if(checkSignOut.value){
+              sessionStorage.clear();
+              this.MixnaccountData = null;
+              this.$router.push({ path: "/" });
+              this.$router.go(0);
+            }
       
     },
     search: function () {

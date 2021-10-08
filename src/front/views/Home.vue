@@ -4,8 +4,8 @@
       <div id="Home_Title" class="py-5 text-center container-fluid">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Album example</h1>
-            <p class="lead text-muted">
+            <h1 class="fw-bold text-white">Album example</h1>
+            <p class="lead text-white">
               Something short and leading about the collection below—its
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don’t simply skip over it entirely.
@@ -77,17 +77,12 @@
               </div>
             </div>
 
-
-            <div class="col"
-             v-for="(value,index) in Image_path"
-             :key="index"
-             >
+            <div class="col" v-for="(value, index) in Image_path" :key="index">
               <div class="card shadow-sm">
-               
                 <img
                   :src="value.path"
                   class="TWimg"
-                  width="100%"  
+                  width="100%"
                   height="100%"
                   fill="#55595c"
                 />
@@ -160,76 +155,85 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
-  data(){
-    return{
-      Image_data:{
-        Img_number:''
+  data() {
+    return {
+      Image_data: {
+        Img_number: "",
       },
-      Image_path:[
+      Image_path: [
         {
-          path:require("../../../public/front_assets/Dog.jpg"),
-          Img_number:'Test01'
+          path: require("../../../public/front_assets/Dog.jpg"),
+          Img_number: "Test01",
         },
         {
-          path:require("../../../public/front_assets/Dog2.jpg"),
-          Img_number:'Test02'
-        }
+          path: require("../../../public/front_assets/Dog2.jpg"),
+          Img_number: "Test02",
+        },
       ],
       // Image_path2:[
       //   {
       //     path
       //   }
       // ]
-    }
+    };
   },
-  mounted(){
+  mounted() {},
 
-  },
-  methods:{
-    LookDogImage:async function(data){
-      this.Image_data.Img_number = data
-     this.FunctionToken(this.GetapiDogViewCard,this.Image_data)
+  methods: {
+      showAlert(object) {
+      // Use sweetalert2
+     return this.$swal(object);
+    },
+    LookDogImage: async function (data) {
+      this.Image_data.Img_number = data;
+      this.FunctionToken(this.GetapiDogViewCard, this.Image_data);
     },
 
-    GetapiDogViewCard: function(data_in){
+    GetapiDogViewCard: function (data_in) {
       this.apiDogViewCard(data_in)
-      .then(res=>{
-        
-        if(res.data.Status == true){
-         console.log(res)
-         window.open(res.data.Data) //暫時
-        }
+        .then((res) => {
+          if (res.data.Status == true) {
+            console.log(res);
+            window.open(res.data.Data); //暫時
+          }
 
-        if(res.data.Status == false){
-         return alert("權限不足")
-        }
-        if(res.data.Status == 505){
-          return alert("請聯絡管理員")
-        }
-      })
-      .catch(err=>{
-        alert("錯誤")
-      })
+          if (res.data.Status == false) {
+               this.showAlert({
+              title: "失敗",
+              text: "權線不足",
+              icon: "error",
+              confirmButtonColor: "#3085d6",
+            });
+          }
+          if (res.data.Status == 505) {
+              this.showAlert({
+              title: "失敗",
+              text: "請聯絡管理員",
+              icon: "error",
+              confirmButtonColor: "#3085d6",
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+          alert("錯誤");
+        });
     },
 
-    LookTaiwanMapWeb:async function(){
-
-      this.FunctionToken(this.GetapiViewCard)
+    LookTaiwanMapWeb: async function () {
+      this.FunctionToken(this.GetapiViewCard);
     },
-    GetapiViewCard: function(data_in){
+    GetapiViewCard: function (data_in) {
       this.apiViewCard(data_in)
-      .then(res=>{
-        if(res.data.Status == true)
-         this.$router.push({path:res.data.Data})
-       if(res.data.Status == false)
-        return  alert("無權訪問")
-        
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    }
-
+        .then((res) => {
+          if (res.data.Status == true)
+            this.$router.push({ path: res.data.Data });
+          if (res.data.Status == false) return alert("無權訪問");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 
   components: {
@@ -239,16 +243,18 @@ export default {
 </script>
 <style scoped>
 #Home_Title {
-  background-image: url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6))
+                    ,url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
   
   background-position: center;
   background-size: cover;
 }
-.TWimg{         /*空置圖片縮放比例*/
+.TWimg {
+  /*控制圖片縮放比例*/
   width: 100%;
   height: 50vh;
   object-fit: fill;
-  }
+}
 /* #TWimg{
   background-image: url("../../../public/front_assets/TaiwnaMap.jpg");
 } */
