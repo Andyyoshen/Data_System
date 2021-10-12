@@ -16,6 +16,7 @@
             </p>
           </div>
         </div>
+        
       </div>
 
       <div class="album py-5 bg-light">
@@ -78,6 +79,7 @@
             </div>
 
             <div class="col" v-for="(value, index) in Image_path" :key="index">
+              
               <div class="card shadow-sm">
                 <img
                   :src="value.path"
@@ -144,17 +146,19 @@
             </div> -->
           </div>
         </div>
-      </div>
+          
+      </div>  
     </main>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+//import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "Home",
+   components:{
+  },
   data() {
     return {
       Image_data: {
@@ -177,12 +181,13 @@ export default {
       // ]
     };
   },
-  mounted() {},
+  mounted() {
+  },
 
   methods: {
-      showAlert(object) {
+    showAlert(object) {
       // Use sweetalert2
-     return this.$swal(object);
+      return this.$swal(object);
     },
     LookDogImage: async function (data) {
       this.Image_data.Img_number = data;
@@ -198,7 +203,7 @@ export default {
           }
 
           if (res.data.Status == false) {
-               this.showAlert({
+            this.showAlert({
               title: "失敗",
               text: "權線不足",
               icon: "error",
@@ -206,7 +211,7 @@ export default {
             });
           }
           if (res.data.Status == 505) {
-              this.showAlert({
+            this.showAlert({
               title: "失敗",
               text: "請聯絡管理員",
               icon: "error",
@@ -215,7 +220,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
           alert("錯誤");
         });
     },
@@ -237,15 +242,15 @@ export default {
   },
 
   components: {
-    HelloWorld,
+    //HelloWorld,
   },
 };
 </script>
 <style scoped>
 #Home_Title {
-  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6))
-                    ,url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
-  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
+
   background-position: center;
   background-size: cover;
 }

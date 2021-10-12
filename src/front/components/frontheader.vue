@@ -35,8 +35,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span class="fa fa-user mr-2" style title></span> 訪客,你好 
-                
+                <span class="fa fa-user mr-2" style title></span> 訪客,你好
               </a>
 
               <ul
@@ -56,7 +55,6 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-               
                 <img
                   class="mb-1"
                   src="../../../public/front_assets/diamond2.svg"
@@ -122,27 +120,26 @@ export default {
   methods: {
     showAlert(object) {
       // Use sweetalert2
-     return this.$swal(object);
+      return this.$swal(object);
     },
-    SignOut: async  function () {
-    const checkSignOut =  await  this.showAlert({
-              title: '您確定嗎？',
-              text: '登出後無法觀看圖片！',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              cancelButtonText: '取消',
-              confirmButtonText: '登出'
-            });
-            
-            if(checkSignOut.value){
-              sessionStorage.clear();
-              this.MixnaccountData = null;
-              this.$router.push({ path: "/" });
-              this.$router.go(0);
-            }
-      
+    SignOut: async function () {
+      const checkSignOut = await this.showAlert({
+        title: "您確定嗎？",
+        text: "登出後無法觀看圖片！",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "取消",
+        confirmButtonText: "登出",
+      });
+
+      if (checkSignOut.value) {
+        sessionStorage.clear();
+        this.MixnaccountData = null;
+        this.$router.push({ path: "/" });
+        this.$router.go(0);
+      }
     },
     search: function () {
       this.FunctionToken(this.searchFunction, this.ACCOUNT_Data);

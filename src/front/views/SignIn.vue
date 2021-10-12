@@ -92,6 +92,17 @@
                 </div>
               </div>
             </div>
+            <div class="vld-parent">
+        <loading 
+        loader="Dots"
+        width=100
+        color='blue'
+        :active.sync="this.$store.state.LoadingforData" 
+        :can-cancel="true" 
+        :on-cancel="onCancel"
+        :is-full-page="fullPage">
+        </loading>
+    </div>
           </div>
           <div class="modal-footer">
             <button
@@ -170,6 +181,17 @@
                 <label for="floatingInput">電子信箱 :</label>
               </div>
             </form>
+            <div class="vld-parent">
+        <loading 
+        loader="Dots"
+        width=100
+        color='blue'
+        :active.sync="this.$store.state.LoadingforData" 
+        :can-cancel="true" 
+        :on-cancel="onCancel"
+        :is-full-page="fullPage">
+        </loading>
+    </div>
           </div>
           <div class="">
             <button
@@ -193,17 +215,24 @@
         </div>
       </div>
     </div>
+      
   </div>
 </template>
 <script>
 //引入外部
 // import '../../../public/front_css/bootstrap.min.css'
 import "../../../public/front_css/signin.css";
+import VueLoading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
   name: "SignIn",
+  components:{
+    'loading':VueLoading
+  },
   data() {
     return {
+      isLoading: false,
       ImageCode: "",
       ACCOUNT_Data: {
         AC_USER: "",
@@ -260,19 +289,22 @@ export default {
       }
     },
     userForget: async function () {
+      
       let data_result = await this.checkFrogetData();
       if (data_result == false) {
         return false;
       }
-
+      this.$store.commit("LoadforData",true)
       this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
     },
     forgetFunction: function (data_in) {
       //要調整搜尋之後直接跑流程,不要等respons
       this.apiSendForget(data_in)
         .then((res) => {
+          this.$store.commit("LoadforData",false)
           if (res.data.Status == true) {
             // alert("已寄出")
+            
             this.showAlert({
               title: "成功",
               text: "已寄出郵件",
@@ -285,6 +317,7 @@ export default {
             this.$router.push({ path: "/ForgetPassword" });
           }
           if (res.data.Status == false) {
+           
             alert("郵件或帳號輸入有誤，找不到使用者");
             this.Forget_ACCOUNT_Data.AC_USER = "";
             this.Forget_ACCOUNT_Data.AC_EMAIL = "";
@@ -292,33 +325,39 @@ export default {
           }
         })
         .catch((err) => {
+          this.$store.commit("LoadforData",false)
           console.log(err + "錯誤");
         });
     },
     SaveAccount: async function () {
+      
       let checkImagePassData_result = await this.checkImagePassData();
       if (checkImagePassData_result == false) {
         return false;
       }
+      this.$store.commit("LoadforData",true)
       this.FunctionToken(this.loginFunction, this.ACCOUNT_Data);
     },
     loginFunction: function (data_in) {
       this.apilogin(data_in)
         .then(async (res) => {
+          this.$store.commit("LoadforData",false)
           if (res.data.Status == true) {
-            await  this.showAlert({
+            
+            await this.showAlert({
               title: "成功",
               text: "歡迎登入",
               icon: "success",
               confirmButtonColor: "#3085d6",
             });
-          await  this.DialogModal.hide();
-          await  this.$router.push({ path: "/" });
-          await  sessionStorage.setItem("TokenID", res.data.Data);
-          await  this.$router.go(0); // 刷新頁面
+            await this.DialogModal.hide();
+            await this.$router.push({ path: "/" });
+            await sessionStorage.setItem("TokenID", res.data.Data);
+            await this.$router.go(0); // 刷新頁面
             console.log("T1");
           }
           if (res.data.Status == false) {
+            
             alert("登入資訊有誤");
             this.DialogModal.hide();
             this.ImageCodeFunction();
@@ -328,6 +367,7 @@ export default {
           }
         })
         .catch((err) => {
+         this.$store.commit("LoadforData",false)
           console.log(err + "錯");
         });
     },
@@ -367,7 +407,7 @@ export default {
     },
     showAlert(object) {
       // Use sweetalert2
-     return this.$swal(object);
+      return this.$swal(object);
     },
   },
 };
