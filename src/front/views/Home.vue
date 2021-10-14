@@ -82,6 +82,7 @@
               
               <div class="card shadow-sm">
                 <img
+                  id="ssss"
                   :src="value.path"
                   class="TWimg"
                   width="100%"
@@ -111,6 +112,46 @@
                 </div>
               </div>
             </div>
+
+          <!----------------假資料---------->
+          <div class="col">
+              <div class="card shadow-sm">
+                <img
+                  src="../../../public/front_assets/Dog3.jpg"
+                  class="TWimg"
+                  width="100%"
+                  height="100%"
+                  fill="#55595c"
+                />
+                <div class="card-body">
+                  <p class="card-text">
+                    思思專屬瀏覽
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        @click="forsusu()"
+                      >
+                        觀看
+                      </button>
+                      <!-- <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Edit
+                      </button> -->
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             <!-- <div class="col">
               <div class="card shadow-sm">
                    <img
@@ -155,12 +196,31 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from "@/components/HelloWorld.vue";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox.css";
 export default {
   name: "Home",
    components:{
   },
   data() {
     return {
+          gallery : [
+      {
+        src: "https://lipsum.app/id/2/800x600",
+        thumb: "https://lipsum.app/id/2/80x80",
+        caption: "First image",
+      },
+      {
+        src: "https://lipsum.app/id/3/800x600",
+        thumb: "https://lipsum.app/id/3/80x80",
+        caption: "Second image",
+      },
+      {
+        src: "https://lipsum.app/id/4/800x600",
+        thumb: "https://lipsum.app/id/4/80x80",
+        caption: "Third image",
+      },
+    ],
       Image_data: {
         Img_number: "",
       },
@@ -182,15 +242,63 @@ export default {
     };
   },
   mounted() {
+    
+      
+   // fancybox.next();
+   // fancybox.close();
+    //Fancybox.getInstance().jumpTo(1);
+    console.log(fancybox)
+    Fancybox.bind('[data-fancybox="gallery"]', {
+    caption: function (fancybox, carousel, slide) {
+      console.log(carousel)
+      console.log(slide)
+  },
+});
+    //Fancybox.show(gallery);
+    //Fancybox.bind('[data-fancybox="gallery"]')
   },
 
   methods: {
+    forsusu: function(){
+      Fancybox.show(    [
+                          {
+                                src: require("../../../public/front_assets/Dog3.jpg"),
+                                type: "image", //將格式放入
+                          },
+                          {
+                                src: require("../../../public/front_assets/Dog4.jpg"),
+                                type: "image", //將格式放入
+                          },
+                          {
+                                src: require("../../../public/front_assets/Dog5.jpg"),
+                                type: "image", //將格式放入
+                          },
+                          {
+                                src: require("../../../public/front_assets/Dog6.jpg"),
+                                type: "image", //將格式放入
+                          },
+
+                        ],
+                    {
+                        Toolbar: {
+                        display: [
+                            { id: "zoom", position: "left" },
+                            {id:  "fullscreen", position:"left"},
+                            { id: "counter", position: "center" },
+                            { id: "close", position: "right" },
+                        ],
+                      },
+                    }
+            );
+    },
     showAlert(object) {
       // Use sweetalert2
       return this.$swal(object);
     },
     LookDogImage: async function (data) {
+     
       this.Image_data.Img_number = data;
+      console.log(this.Image_data.Img_number)
       this.FunctionToken(this.GetapiDogViewCard, this.Image_data);
     },
 
@@ -198,8 +306,27 @@ export default {
       this.apiDogViewCard(data_in)
         .then((res) => {
           if (res.data.Status == true) {
-            console.log(res);
-            window.open(res.data.Data); //暫時
+
+              //處理回傳資料符合Fancybox格式
+                let img_data = []
+                res.data.Data.forEach(element => {
+                img_data.push({src:element,type:"image"})
+                });
+              
+              Fancybox.show( 
+               img_data, //將格式放入
+              {
+                  Toolbar: {
+                  display: [
+                      { id: "zoom", position: "left" },
+                      {id:  "fullscreen", position:"left"},
+                      { id: "counter", position: "center" },
+                      { id: "close", position: "right" },
+                  ],
+                },
+              }
+            );
+          //   window.open(res.data.Data); //暫時
           }
 
           if (res.data.Status == false) {
