@@ -125,7 +125,7 @@
                 />
                 <div class="card-body">
                   <p class="card-text">
-                    思思專屬瀏覽
+                    思思瀏覽專區
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -247,13 +247,13 @@ export default {
    // fancybox.next();
    // fancybox.close();
     //Fancybox.getInstance().jumpTo(1);
-    console.log(fancybox)
-    Fancybox.bind('[data-fancybox="gallery"]', {
-    caption: function (fancybox, carousel, slide) {
-      console.log(carousel)
-      console.log(slide)
-  },
-});
+//     console.log(fancybox)
+//     Fancybox.bind('[data-fancybox="gallery"]', {
+//     caption: function (fancybox, carousel, slide) {
+//       console.log(carousel)
+//       console.log(slide)
+//   },
+// });
     //Fancybox.show(gallery);
     //Fancybox.bind('[data-fancybox="gallery"]')
   },
