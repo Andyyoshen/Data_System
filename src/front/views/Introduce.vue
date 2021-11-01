@@ -4,9 +4,9 @@
       <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <main class="mt-auto px-3">
           <div class="container px-4 px-lg-5 text-center">
-            <h1 id="Introduce_top_title" class="mb-1 text-dark">數 據 平 台</h1>
+            <h1 id="Introduce_top_title" class="mb-1 text-dark">柴 窩 平 台</h1>
             <h3 id="Introduce_top_title2" class="mb-5 text-dark">
-              <em>加 入 會 員 可 觀 看 最 新 即 時 數 據</em>
+              <em>快 來 加 入 會 員 觀 看 最 新 柴 犬 圖</em>
             </h3>
             <!-- <a href="#" class="btn-secondaryq">Learn more</a> -->
             <a class="btn btn-primary btn-xl" href="#/">了 解 更 多</a>
@@ -22,9 +22,9 @@
 
         <footer class="mt-auto text-white-50">
           <p>
-            Cover template for
-            <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a
-            >, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.
+            @xxx股份有限公司
+            <!-- <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a
+            >, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>. -->
           </p>
         </footer>
       </div>

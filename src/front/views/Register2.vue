@@ -5,14 +5,14 @@
 
     <div class="card bg-light">
       <article class="card-body mx-auto" style="max-width: 400px">
-        <h4 class="card-title mt-3 text-center">Create Account</h4>
-        <p class="text-center">Get started with your free account</p>
+        <h4 class="card-title mt-3 text-center">註 冊 會 員</h4>
+        <p class="text-center">加入會員即可觀看免費圖片</p>
         <p>
-          <a href="" class="w-100 btn btn-block btn-twitter mb-2">
-            <i class="fab fa-twitter"></i>   Login via Twitter</a
+          <button type="button" class="w-100 btn btn-block btn-twitter mb-2">
+            <i class="fab fa-twitter"></i>   Login for Twitter</button
           >
-          <a href="" class="w-100 btn btn-block btn-facebook mb-2">
-            <i class="fab fa-facebook-f"></i>   Login via facebook</a
+          <button type="button" class="w-100 btn btn-block btn-facebook mb-2">
+            <i class="fab fa-facebook-f"></i>   Login for facebook</button
           >
         </p>
         <p class="divider-text">
@@ -115,7 +115,7 @@
                 ><i class="fa fa-lock"></i>
               </span>
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 placeholder="密碼"
                 aria-label="Username"
@@ -131,7 +131,7 @@
                 ><i class="fa fa-lock"></i
               ></span>
               <input
-                type="text"
+                type="password"
                 :class="
                   ACPWDCHECK_COLOR == 'blue'
                     ? 'form-control'
@@ -153,7 +153,7 @@
           <!-- form-group// -->
           <div class="form-group mb-3">
             <button
-              type="submit"
+              type="button"
               :class="
                 this.registerButtonCheck == false
                   ? 'w-100 btn btn-primary btn-block disabled'
@@ -161,11 +161,11 @@
               "
               @click="register()"
             >
-              Create Account
+              確 定 送 出
             </button>
           </div>
           <!-- form-group// -->
-          <p class="text-center">Have an account? <a href="">Log In</a></p>
+          <p class="text-center">已 有 會 員 了 嗎? <a href="#" @click="Gotosignin()">登 入</a></p>
         </form>
       </article>
     </div>
@@ -221,6 +221,9 @@ export default {
    // this.isLoading = true;
   },
   methods: {
+    Gotosignin: function(){
+      this.$router.push({ path: '/Signin' })
+    },
      doAjax() {
           alert("ddd")
                 this.isLoading = true;

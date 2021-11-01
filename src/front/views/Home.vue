@@ -4,15 +4,15 @@
       <div id="Home_Title" class="py-5 text-center container-fluid">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-bold text-white">Album example</h1>
+            <h1 class="fw-bold text-white">相 簿 展 示</h1>
             <p class="lead text-white">
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don’t simply skip over it entirely.
+              A bird in the hand is worth two in the bush 。
+              birds of a feather flock together。have one's cake and eat it too 。
+              No pain no gain. Knowledge is power
             </p>
             <p>
-              <a href="#" class="btn btn-primary my-2">Main call to action</a>
-              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+              <button type="button" class="btn btn-primary my-2">關於本公司</button>
+              <!-- <button type="button" class="btn btn-secondary my-2">取消</button> -->
             </p>
           </div>
         </div>
@@ -107,14 +107,14 @@
                         觀看
                       </button>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted">8 mins</small>
                   </div>
                 </div>
               </div>
             </div>
 
           <!----------------假資料---------->
-          <div class="col">
+          <!-- <div class="col">
               <div class="card shadow-sm">
                 <img
                   src="../../../public/front_assets/Dog3.jpg"
@@ -138,19 +138,13 @@
                       >
                         觀看
                       </button>
-                      <!-- <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button> -->
                     </div>
                     <small class="text-muted">9 mins</small>
                   </div>
                 </div>
               </div>
-            </div>
-
+            </div> -->
+            <!----------------假資料---------->
 
             <!-- <div class="col">
               <div class="card shadow-sm">
@@ -233,6 +227,10 @@ export default {
           path: require("../../../public/front_assets/Dog2.jpg"),
           Img_number: "Test02",
         },
+         {
+          path: require("../../../public/front_assets/Dog3.jpg"),
+          Img_number: "Test03",
+        },
       ],
       // Image_path2:[
       //   {
@@ -259,38 +257,38 @@ export default {
   },
 
   methods: {
-    forsusu: function(){
-      Fancybox.show(    [
-                          {
-                                src: require("../../../public/front_assets/Dog3.jpg"),
-                                type: "image", //將格式放入
-                          },
-                          {
-                                src: require("../../../public/front_assets/Dog4.jpg"),
-                                type: "image", //將格式放入
-                          },
-                          {
-                                src: require("../../../public/front_assets/Dog5.jpg"),
-                                type: "image", //將格式放入
-                          },
-                          {
-                                src: require("../../../public/front_assets/Dog6.jpg"),
-                                type: "image", //將格式放入
-                          },
+    // forsusu: function(){
+    //   Fancybox.show(    [
+    //                       {
+    //                             src: require("../../../public/front_assets/Dog3.jpg"),
+    //                             type: "image", //將格式放入
+    //                       },
+    //                       {
+    //                             src: require("../../../public/front_assets/Dog4.jpg"),
+    //                             type: "image", //將格式放入
+    //                       },
+    //                       {
+    //                             src: require("../../../public/front_assets/Dog5.jpg"),
+    //                             type: "image", //將格式放入
+    //                       },
+    //                       {
+    //                             src: require("../../../public/front_assets/Dog6.jpg"),
+    //                             type: "image", //將格式放入
+    //                       },
 
-                        ],
-                    {
-                        Toolbar: {
-                        display: [
-                            { id: "zoom", position: "left" },
-                            {id:  "fullscreen", position:"left"},
-                            { id: "counter", position: "center" },
-                            { id: "close", position: "right" },
-                        ],
-                      },
-                    }
-            );
-    },
+    //                     ],
+    //                 {
+    //                     Toolbar: {
+    //                     display: [
+    //                         { id: "zoom", position: "left" },
+    //                         {id:  "fullscreen", position:"left"},
+    //                         { id: "counter", position: "center" },
+    //                         { id: "close", position: "right" },
+    //                     ],
+    //                   },
+    //                 }
+    //         );
+    // },
     showAlert(object) {
       // Use sweetalert2
       return this.$swal(object);
@@ -306,7 +304,7 @@ export default {
       this.apiDogViewCard(data_in)
         .then((res) => {
           if (res.data.Status == true) {
-
+              console.log(res.data.Data)
               //處理回傳資料符合Fancybox格式
                 let img_data = []
                 res.data.Data.forEach(element => {
@@ -353,7 +351,8 @@ export default {
     },
 
     LookTaiwanMapWeb: async function () {
-      this.FunctionToken(this.GetapiViewCard);
+       this.$router.push({ path: "/TaiwanMap" });
+     // this.FunctionToken(this.GetapiViewCard);
     },
     GetapiViewCard: function (data_in) {
       this.apiViewCard(data_in)

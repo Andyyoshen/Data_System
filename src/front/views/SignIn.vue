@@ -5,12 +5,13 @@
         <form>
           <img
             class="mb-4"
-            src="../../assets/logo.png"
+            src="../../../public/front_assets/happy.png"
+            
             alt=""
-            width="72"
+            width="57"
             height="57"
           />
-          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          <h1 class="h3 mb-3 fw-normal">會 員 登 入</h1>
 
           <div class="form-floating">
             <input
@@ -20,7 +21,7 @@
               placeholder="name@example.com"
               v-model="ACCOUNT_Data.AC_USER"
             />
-            <label for="floatingInput">Email address</label>
+            <label for="floatingInput">帳號</label>
           </div>
           <div class="form-floating">
             <input
@@ -30,7 +31,7 @@
               placeholder="Password"
               v-model="ACCOUNT_Data.AC_PWD"
             />
-            <label for="floatingPassword">Password</label>
+            <label for="floatingPassword">密碼</label>
           </div>
 
           <div class="checkbox mb-3">
@@ -44,9 +45,9 @@
             type="button"
             @click="userLogin()"
           >
-            Sign in
+            登 入
           </button>
-          <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+          <p class="mt-5 mb-3 text-muted">&copy; xxx股份有限公司</p>
         </form>
       </main>
     </div>
@@ -61,7 +62,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title text-center" id="exampleModalLabel">圖型驗證</h5>
             <button
               type="button"
               class="btn-close"
@@ -353,7 +354,7 @@ export default {
             await this.DialogModal.hide();
             await this.$router.push({ path: "/" });
             await sessionStorage.setItem("TokenID", res.data.Data);
-            await this.$router.go(0); // 刷新頁面
+            await window.location.reload(); // 刷新頁面
             console.log("T1");
           }
           if (res.data.Status == false) {
