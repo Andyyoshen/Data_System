@@ -2,17 +2,18 @@
   <div id="app">
     <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
     <frontheader></frontheader>
-    
-     <div class="vld-parent">
-        <loading 
+
+    <div class="vld-parent">
+      <loading
         loader="Dots"
-        width=100
-        color='blue'
-        :active.sync="this.$store.state.LoadingPage" 
-        :can-cancel="true" 
+        width="100"
+        color="blue"
+        :active.sync="this.$store.state.LoadingPage"
+        :can-cancel="true"
         :on-cancel="onCancel"
-        :is-full-page="fullPage">
-        </loading>
+        :is-full-page="fullPage"
+      >
+      </loading>
     </div>
 
     <!-- <div>
@@ -54,75 +55,65 @@
 </style>
 <script>
 import frontheader from "../front/components/frontheader.vue";
-import VueLoading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import VueLoading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 export default {
   name: "front",
   components: {
     frontheader,
-    'loading':VueLoading
-    
+    loading: VueLoading,
   },
   data() {
     return {
       isLoading: false,
     };
   },
-   beforeCreate(){
-      
-  // alert("A")
-    
-   // this.isLoading = true
-  },
-  created(){
-   
-    
- //  this.$store.commit("Load",false)
-  //  alert("A")
- //  alert("B")
-    // this.isLoading = false
-  },
-  beforeMount(){
-     
-    
-  //  alert("C")
-  },
-  mounted(){
-    this.$store.commit("Load",true)
-    let  VuexInside = this.$store
-    setTimeout(function(){
-      VuexInside.commit("Load",false)
-    }
-    , 2000);
-    //this.LoadingPageFun()
-  //  this.isLoading = true
-  //  this.$store.state.LoadingPage = true
-   // alert()
-    //this.isLoading = true
-  // alert("D")
-  },
-  beforeDestroy(){
-    
+  beforeCreate() {
+    // alert("A")
     // this.isLoading = true
   },
-  destroyed(){
-   // this.isLoading = true
+  created() {
+    //  this.$store.commit("Load",false)
+    //  alert("A")
+    //  alert("B")
+    // this.isLoading = false
+  },
+  beforeMount() {
+    //  alert("C")
+  },
+  mounted() {
+    this.$store.commit("Load", true);
+    let VuexInside = this.$store;
+    setTimeout(function () {
+      VuexInside.commit("Load", false);
+    }, 2000);
+    //this.LoadingPageFun()
+    //  this.isLoading = true
+    //  this.$store.state.LoadingPage = true
+    // alert()
+    //this.isLoading = true
+    // alert("D")
+  },
+  beforeDestroy() {
+    // this.isLoading = true
+  },
+  destroyed() {
+    // this.isLoading = true
   },
   // updated(){
   //  alert("E")
   // },
   methods: {
-    LoadingPageFun: function(){
-      
-      return this.$store.state.LoadingPage
+    LoadingPageFun: function () {
+      return this.$store.state.LoadingPage;
     },
-    nnn: function(){
-      console.log("D")
-      this.$store.commit("Load",true)
+    nnn: function () {
+      console.log("D");
+      this.$store.commit("Load", true);
     },
-    ccc: function(){
-      console.log("D")
-      this.$store.commit("Load",false)
+    ccc: function () {
+      console.log("D");
+      this.$store.commit("Load", false);
     },
     Showdialog: function () {
       this.DialogModal = new bootstrap.Modal(
@@ -137,13 +128,13 @@ export default {
 };
 </script>
 <style>
-
-html, body {
-   height: 100%;
-    padding: 0;
-    margin: 0;
-    }
-#app{
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+#app {
   height: 100%;
 }
 </style>

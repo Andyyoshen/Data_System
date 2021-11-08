@@ -17,7 +17,6 @@
     <p class="lead">
       <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
     </p> -->
-     
         </main>
 
         <footer class="mt-auto text-white-50">
@@ -29,63 +28,56 @@
         </footer>
       </div>
     </div>
-   
+
     <div class="vld-parent">
-        <loading 
+      <loading
         loader="Dots"
-        width=100
-        color='blue'
-        :active.sync="isLoading" 
-        :can-cancel="true" 
+        width="100"
+        color="blue"
+        :active.sync="isLoading"
+        :can-cancel="true"
         :on-cancel="onCancel"
-        :is-full-page="fullPage">
-        </loading>
+        :is-full-page="fullPage"
+      >
+      </loading>
     </div>
-    
   </div>
 </template>
 <script>
-import  "../../../public/front_css/bootstrap-iso_Introduce.css";
-import VueLoading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import "../../../public/front_css/bootstrap-iso_Introduce.css";
+import VueLoading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 export default {
   name: "Introduce",
-  components:{
-    'loading':VueLoading
+  components: {
+    loading: VueLoading,
   },
   data() {
     return {
-    //  isLoading: false,
+      //  isLoading: false,
     };
   },
-  beforeCreate(){
+  beforeCreate() {
     //this.$store.commit("Load",true)
-   // this.$store.commit("Load",true)
+    // this.$store.commit("Load",true)
   },
-  created(){
-    
-   // this.$store.commit("Load",true)
+  created() {
+    // this.$store.commit("Load",true)
     //  let  VuexInside = this.$store
     // setTimeout(function(){
     //   VuexInside.commit("Load",false)
     // }
     // , 2000);
-   // this.$store.commit("Load",true)
-   // alert(this.$store.state.LoadingPage)
- //alert("B")
+    // this.$store.commit("Load",true)
+    // alert(this.$store.state.LoadingPage)
+    //alert("B")
   },
-  mounted(){
+  mounted() {
     //this.$store.commit("Load",true)
-   // this.$store.commit("Load",false)
-   
-     
-     //alert(this.$store.state.LoadingPage)
-   
+    // this.$store.commit("Load",false)
+    //alert(this.$store.state.LoadingPage)
   },
-  methods:{
-    
-  }
-  
+  methods: {},
 };
 </script>
 <style>

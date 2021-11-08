@@ -6,17 +6,18 @@
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-bold text-white">相 簿 展 示</h1>
             <p class="lead text-white">
-              A bird in the hand is worth two in the bush 。
-              birds of a feather flock together。have one's cake and eat it too 。
-              No pain no gain. Knowledge is power
+              A bird in the hand is worth two in the bush 。 birds of a feather
+              flock together。have one's cake and eat it too 。 No pain no gain.
+              Knowledge is power
             </p>
             <p>
-              <button type="button" class="btn btn-primary my-2">關於本公司</button>
+              <button type="button" class="btn btn-primary my-2">
+                關於本公司
+              </button>
               <!-- <button type="button" class="btn btn-secondary my-2">取消</button> -->
             </p>
           </div>
         </div>
-        
       </div>
 
       <div class="album py-5 bg-light">
@@ -50,9 +51,7 @@
 
                 <div class="card-body">
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    點擊各個區域縣市，可以顯示及時肇事數據。
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -77,9 +76,39 @@
                 </div>
               </div>
             </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img
+                  id="ssss"
+                  :src="usualImage_path.path"
+                  class="TWimg"
+                  width="100%"
+                  height="100%"
+                  fill="#55595c"
+                />
+                <div class="card-body">
+                  <p class="card-text">
+                    {{usualImage_path.contan}}
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        @click="usualLookDogImage()"
+                      >
+                        觀看
+                      </button>
+                    </div>
+                    <small class="text-muted">8 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="col" v-for="(value, index) in Image_path" :key="index">
-              
               <div class="card shadow-sm">
                 <img
                   id="ssss"
@@ -91,9 +120,7 @@
                 />
                 <div class="card-body">
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    {{value.contan}}
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -113,8 +140,8 @@
               </div>
             </div>
 
-          <!----------------假資料---------->
-          <!-- <div class="col">
+            <!----------------假資料---------->
+            <!-- <div class="col">
               <div class="card shadow-sm">
                 <img
                   src="../../../public/front_assets/Dog3.jpg"
@@ -181,8 +208,7 @@
             </div> -->
           </div>
         </div>
-          
-      </div>  
+      </div>
     </main>
   </div>
 </template>
@@ -194,42 +220,45 @@ import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox.css";
 export default {
   name: "Home",
-   components:{
-  },
+  components: {},
   data() {
     return {
-          gallery : [
-      {
-        src: "https://lipsum.app/id/2/800x600",
-        thumb: "https://lipsum.app/id/2/80x80",
-        caption: "First image",
-      },
-      {
-        src: "https://lipsum.app/id/3/800x600",
-        thumb: "https://lipsum.app/id/3/80x80",
-        caption: "Second image",
-      },
-      {
-        src: "https://lipsum.app/id/4/800x600",
-        thumb: "https://lipsum.app/id/4/80x80",
-        caption: "Third image",
-      },
-    ],
+      gallery: [
+        {
+          src: require("../../../public/front_assets/Dog5.jpg"),
+          caption: "曬太陽",
+        },
+        {
+          src: require("../../../public/front_assets/Dog11.jpg"),
+          caption: "酷嗎",
+        },
+        {
+          src: require("../../../public/front_assets/Dog12.jpg"),
+          caption: "冰淇淋好吃",
+        },
+      ],
       Image_data: {
         Img_number: "",
+      },
+      usualImage_path: {
+          path: require("../../../public/front_assets/Dog5.jpg"),
+          contan:"訪客即可觀看，我是和服柴"
       },
       Image_path: [
         {
           path: require("../../../public/front_assets/Dog.jpg"),
           Img_number: "Test01",
+          contan:"權限皇冠才能觀看，我是復古柴"
         },
         {
           path: require("../../../public/front_assets/Dog2.jpg"),
           Img_number: "Test02",
+          contan:"權限鑽石才能觀看，我是墨鏡柴"
         },
-         {
+        {
           path: require("../../../public/front_assets/Dog3.jpg"),
           Img_number: "Test03",
+          contan:"權限同牌才能觀看，我是少年柴"
         },
       ],
       // Image_path2:[
@@ -240,18 +269,16 @@ export default {
     };
   },
   mounted() {
-    
-      
-   // fancybox.next();
-   // fancybox.close();
+    // fancybox.next();
+    // fancybox.close();
     //Fancybox.getInstance().jumpTo(1);
-//     console.log(fancybox)
-//     Fancybox.bind('[data-fancybox="gallery"]', {
-//     caption: function (fancybox, carousel, slide) {
-//       console.log(carousel)
-//       console.log(slide)
-//   },
-// });
+    //     console.log(fancybox)
+    //     Fancybox.bind('[data-fancybox="gallery"]', {
+    //     caption: function (fancybox, carousel, slide) {
+    //       console.log(carousel)
+    //       console.log(slide)
+    //   },
+    // });
     //Fancybox.show(gallery);
     //Fancybox.bind('[data-fancybox="gallery"]')
   },
@@ -293,10 +320,24 @@ export default {
       // Use sweetalert2
       return this.$swal(object);
     },
+    usualLookDogImage: async function (data) {
+            Fancybox.show(
+              this.gallery, //將格式放入
+              {
+                Toolbar: {
+                  display: [
+                    { id: "zoom", position: "left" },
+                    { id: "fullscreen", position: "left" },
+                    { id: "counter", position: "center" },
+                    { id: "close", position: "right" },
+                  ],
+                },
+              }
+            );
+    },
     LookDogImage: async function (data) {
-     
       this.Image_data.Img_number = data;
-      console.log(this.Image_data.Img_number)
+      console.log(this.Image_data.Img_number);
       this.FunctionToken(this.GetapiDogViewCard, this.Image_data);
     },
 
@@ -304,27 +345,27 @@ export default {
       this.apiDogViewCard(data_in)
         .then((res) => {
           if (res.data.Status == true) {
-              console.log(res.data.Data)
-              //處理回傳資料符合Fancybox格式
-                let img_data = []
-                res.data.Data.forEach(element => {
-                img_data.push({src:element,type:"image"})
-                });
-              
-              Fancybox.show( 
-               img_data, //將格式放入
+            console.log(res.data.Data);
+            //處理回傳資料符合Fancybox格式
+            let img_data = [];
+            res.data.Data.forEach((element) => {
+              img_data.push({ src: element, type: "image" });
+            });
+
+            Fancybox.show(
+              img_data, //將格式放入
               {
-                  Toolbar: {
+                Toolbar: {
                   display: [
-                      { id: "zoom", position: "left" },
-                      {id:  "fullscreen", position:"left"},
-                      { id: "counter", position: "center" },
-                      { id: "close", position: "right" },
+                    { id: "zoom", position: "left" },
+                    { id: "fullscreen", position: "left" },
+                    { id: "counter", position: "center" },
+                    { id: "close", position: "right" },
                   ],
                 },
               }
             );
-          //   window.open(res.data.Data); //暫時
+            //   window.open(res.data.Data); //暫時
           }
 
           if (res.data.Status == false) {
@@ -351,8 +392,8 @@ export default {
     },
 
     LookTaiwanMapWeb: async function () {
-       this.$router.push({ path: "/TaiwanMap" });
-     // this.FunctionToken(this.GetapiViewCard);
+      this.$router.push({ path: "/TaiwanMap" });
+      // this.FunctionToken(this.GetapiViewCard);
     },
     GetapiViewCard: function (data_in) {
       this.apiViewCard(data_in)

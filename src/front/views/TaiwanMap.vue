@@ -3,27 +3,24 @@
     <div class="container">
       <div class="row">
         <div class="taiwan-map col-lg-4" ref="map">
-        <div id="map">
-          <svg
-            id="svg"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
-          ></svg>
+          <div id="map">
+            <svg
+              id="svg"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            ></svg>
+          </div>
+        </div>
+        <div class="taiwan-bar col" ref="bar">
+          <div class="bar-title text-center">
+            <h1>{{ h1 }}</h1>
+            <h2>{{ h2 }}</h2>
+          </div>
+          <div class="bar-data"></div>
         </div>
       </div>
-      <div  class="taiwan-bar col" ref="bar">
-        <div   class="bar-title text-center">
-          <h1>{{ h1 }}</h1>
-          <h2>{{ h2 }}</h2>
-        </div>
-        <div class="bar-data"></div>
-      </div>
-      
-      
-    </div>
     </div>
   </div>
-  
 </template>
 <script>
 // import "../../../public/front_css/TaiwanMap.css"
@@ -57,31 +54,30 @@ export default {
       February_Accident: "",
       Tai_None_Accident: "",
       Total_Tai_None_Arry: [],
-      taiwan_bar_screenpage:true
+      taiwan_bar_screenpage: true,
     };
   },
   mounted() {
     //  this.testapi()
     this.getTaiwanMap();
     this.GetTaiwanAlongapi();
-    
+
     // window.onresize = () => {
     //  console.log(document.documentElement.scrollWidth)
     // };
-    console.log("uuu")
+    console.log("uuu");
     //window.addEventListener('resize',this.listenResize);  //監控螢幕寬度
     // this.showbar();
     // this.GetTaiwanAccapi('臺南市')
 
     //this.GetTaiwanApi();
   },
-  
+
   methods: {
-    listenResize(){
-      console.log(document.documentElement.scrollWidth)
-      if(document.documentElement.scrollWidth <1064)
-      this.taiwan_bar_screenpage = false
-      
+    listenResize() {
+      console.log(document.documentElement.scrollWidth);
+      if (document.documentElement.scrollWidth < 1064)
+        this.taiwan_bar_screenpage = false;
     },
     GetTaiwanApi() {
       this.$axios
@@ -197,7 +193,7 @@ export default {
     },
     showbar(show_data) {
       // 字串解析
-      var n  = this
+      var n = this;
       var arry_road = [];
       show_data.filter((ans) => {
         arry_road.push({
@@ -205,14 +201,17 @@ export default {
           road_name: ans.rdname.split("、")[0] + "(" + ans.crossRoadArea + ")",
         });
       });
-       const width = this.$refs.bar.offsetWidth
-       
-       console.log(n.$refs)
-      var s = d3.select(".bar-data").append("svg").attr({
-        width: width-100,
-        height: 500,
-      })
-      .attr("viewBox", `0 0 690 600`); //0 0 690 600
+      const width = this.$refs.bar.offsetWidth;
+
+      console.log(n.$refs);
+      var s = d3
+        .select(".bar-data")
+        .append("svg")
+        .attr({
+          width: width - 100,
+          height: 500,
+        })
+        .attr("viewBox", `0 0 690 600`); //0 0 690 600
 
       var rect = s.append("g").attr({
         id: "rect",
@@ -299,7 +298,7 @@ export default {
         });
     },
     async getTaiwanMap() {
-      console.log(this.$refs.map)
+      console.log(this.$refs.map);
       const width = this.$refs.map.offsetWidth.toFixed(),
         height = this.$refs.map.offsetHeight.toFixed();
       console.log(width);
@@ -309,7 +308,7 @@ export default {
         w = window.screen.width;
       console.log("-----------");
       console.log(w);
-      console.log(document.documentElement.scrollWidth)
+      console.log(document.documentElement.scrollWidth);
       if (w > 1366) {
         mercatorScale = 12000;
       } else if (w <= 1366 && w > 480) {
@@ -321,18 +320,14 @@ export default {
       // d3：svg path 產生器
       var path = await d3.geo.path().projection(
         // !important 座標變換函式
-        d3.geo
-          .mercator()
-          .center([123, 25.3])
-          .scale(9000) 
-         
+        d3.geo.mercator().center([123, 25.3]).scale(9000)
       );
       // 讓d3抓svg，並寫入寬高
       var svg = await d3
         .select("#svg")
-        .attr("width", width)  //width 關鍵!!暫時
-        .attr("height", 900) 
-        .attr("viewBox", `0 0 ${width} 900`);  // -200 100 1 900  原.attr("viewBox", `0 0 ${width} 900`);
+        .attr("width", width) //width 關鍵!!暫時
+        .attr("height", 900)
+        .attr("viewBox", `0 0 ${width} 900`); // -200 100 1 900  原.attr("viewBox", `0 0 ${width} 900`);
       // 讓d3抓GeoJSON檔，並寫入path的路徑 data:geometry
       var url = "front_assets/taiwan.geojson";
       await d3.json(url, (error, geometry) => {
@@ -344,7 +339,7 @@ export default {
           .enter()
           .append("path")
           .attr("d", path)
-          
+
           .attr({
             // 設定id，為了click時加class用
             id: (d) => "city" + d.properties.COUNTYCODE,
@@ -372,11 +367,11 @@ export default {
     },
   },
   beforeDestroy() {
-  //window.removeEventListener("resize",this.listenResize); // 停止監控螢幕寬度
-}
+    //window.removeEventListener("resize",this.listenResize); // 停止監控螢幕寬度
+  },
 };
 </script>
-<style >
+<style>
 #svg {
   fill: #12213a;
 }
@@ -384,18 +379,16 @@ export default {
   fill: #ffa9ab;
   transition: 0.5s;
 }
- /* path {
+/* path {
   stroke: #ffa9ab;
   stroke-width: 5px;
 } */
 .county-borders {
-     
-        stroke: #ffa9ab;
-        stroke-width: 5px;
-    } 
+  stroke: #ffa9ab;
+  stroke-width: 5px;
+}
 #MapAll {
   background-color: #12213a;
- 
 }
 /* .taiwan-bar {
   position: absolute;

@@ -9,11 +9,11 @@
         <p class="text-center">加入會員即可觀看免費圖片</p>
         <p>
           <button type="button" class="w-100 btn btn-block btn-twitter mb-2">
-            <i class="fab fa-twitter"></i>   Login for Twitter</button
-          >
+            <i class="fab fa-twitter"></i>   Login for Twitter
+          </button>
           <button type="button" class="w-100 btn btn-block btn-facebook mb-2">
-            <i class="fab fa-facebook-f"></i>   Login for facebook</button
-          >
+            <i class="fab fa-facebook-f"></i>   Login for facebook
+          </button>
         </p>
         <p class="divider-text">
           <span class="bg-light">OR</span>
@@ -165,32 +165,35 @@
             </button>
           </div>
           <!-- form-group// -->
-          <p class="text-center">已 有 會 員 了 嗎? <a href="#" @click="Gotosignin()">登 入</a></p>
+          <p class="text-center">
+            已 有 會 員 了 嗎? <a href="#" @click="Gotosignin()">登 入</a>
+          </p>
         </form>
       </article>
     </div>
     <div class="vld-parent">
-        <loading 
+      <loading
         loader="Dots"
-        width=100
-        color='blue'
-        :active.sync="this.$store.state.LoadingforData" 
-        :can-cancel="true" 
+        width="100"
+        color="blue"
+        :active.sync="this.$store.state.LoadingforData"
+        :can-cancel="true"
         :on-cancel="onCancel"
-        :is-full-page="fullPage">
-        </loading>
+        :is-full-page="fullPage"
+      >
+      </loading>
     </div>
     <!-- card.// -->
   </div>
   <!--container end.//-->
 </template>
 <script>
-import VueLoading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import VueLoading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 export default {
   name: "Register2",
-  components:{
-    'loading':VueLoading
+  components: {
+    loading: VueLoading,
   },
   data() {
     return {
@@ -218,23 +221,22 @@ export default {
   //   this.isLoading = false
   // },
   mounted() {
-   // this.isLoading = true;
+    // this.isLoading = true;
   },
   methods: {
-    Gotosignin: function(){
-      this.$router.push({ path: '/Signin' })
+    Gotosignin: function () {
+      this.$router.push({ path: "/Signin" });
     },
-     doAjax() {
-          alert("ddd")
-                this.isLoading = true;
-                // simulate AJAX
-                //this.isLoading = false
-                
-            },
-            onCancel() {
-               alert('User cancelled the loader.')
-              console.log('User cancelled the loader.')
-            },
+    doAjax() {
+      alert("ddd");
+      this.isLoading = true;
+      // simulate AJAX
+      //this.isLoading = false
+    },
+    onCancel() {
+      alert("User cancelled the loader.");
+      console.log("User cancelled the loader.");
+    },
     checkpassword: async function (data) {
       console.log(this.AC_PWDCHECK);
       if (this.AC_PWDCHECK != "") {
@@ -341,7 +343,7 @@ export default {
       let checkregister_result = await this.checkregister();
 
       if (checkregister_result != false) {
-        this.$store.commit("LoadforData",true)
+        this.$store.commit("LoadforData", true);
         this.FunctionToken(this.registerFunction, this.ACCOUNT_Data);
       }
     },
@@ -349,7 +351,7 @@ export default {
       this.apiRegister(data_in)
         .then(async (res) => {
           console.log(res.data);
-          this.$store.commit("LoadforData",false)
+          this.$store.commit("LoadforData", false);
           if (res.data.Status == true) {
             await this.showAlert({
               title: "成功",
@@ -363,10 +365,9 @@ export default {
           } else {
             alert("發生錯誤請聯絡管理員");
           }
-          
         })
         .catch((err) => {
-          this.$store.commit("LoadforData",false)
+          this.$store.commit("LoadforData", false);
           console.log(err);
           alert("發生錯誤請聯絡管理員");
         });
@@ -406,7 +407,6 @@ export default {
       deep: true,
     },
   },
-  
 };
 </script>
 <style scoped>

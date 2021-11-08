@@ -2,14 +2,14 @@
   <div class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#/"> <img
-                  
+        <a class="navbar-brand" href="#/">
+          <img
             class="mb-1"
             src="../../../public/front_assets/happy.png"
             height="40"
-        /><span class="ms-2">柴窩</span></a>
-        
-       
+          /><span class="ms-2">柴窩</span></a
+        >
+
         <button
           class="navbar-toggler"
           type="button"
@@ -88,7 +88,9 @@
                 class="dropdown-menu dropdown-menu-lg-end"
                 aria-labelledby="navbarDropdown"
               >
-                <li><a href="#" class="dropdown-item" @click="SignOut()">登出</a></li>
+                <li>
+                  <a href="#" class="dropdown-item" @click="SignOut()">登出</a>
+                </li>
                 <!-- <li><a class="dropdown-item" href="#">個人資料</a></li> -->
                 <li><hr class="dropdown-divider" /></li>
                 <li>

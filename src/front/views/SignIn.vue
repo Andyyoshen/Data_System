@@ -6,7 +6,6 @@
           <img
             class="mb-4"
             src="../../../public/front_assets/happy.png"
-            
             alt=""
             width="57"
             height="57"
@@ -62,7 +61,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-center" id="exampleModalLabel">圖型驗證</h5>
+            <h5 class="modal-title text-center" id="exampleModalLabel">
+              圖型驗證
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -94,16 +95,17 @@
               </div>
             </div>
             <div class="vld-parent">
-        <loading 
-        loader="Dots"
-        width=100
-        color='blue'
-        :active.sync="this.$store.state.LoadingforData" 
-        :can-cancel="true" 
-        :on-cancel="onCancel"
-        :is-full-page="fullPage">
-        </loading>
-    </div>
+              <loading
+                loader="Dots"
+                width="100"
+                color="blue"
+                :active.sync="this.$store.state.LoadingforData"
+                :can-cancel="true"
+                :on-cancel="onCancel"
+                :is-full-page="fullPage"
+              >
+              </loading>
+            </div>
           </div>
           <div class="modal-footer">
             <button
@@ -183,16 +185,17 @@
               </div>
             </form>
             <div class="vld-parent">
-        <loading 
-        loader="Dots"
-        width=100
-        color='blue'
-        :active.sync="this.$store.state.LoadingforData" 
-        :can-cancel="true" 
-        :on-cancel="onCancel"
-        :is-full-page="fullPage">
-        </loading>
-    </div>
+              <loading
+                loader="Dots"
+                width="100"
+                color="blue"
+                :active.sync="this.$store.state.LoadingforData"
+                :can-cancel="true"
+                :on-cancel="onCancel"
+                :is-full-page="fullPage"
+              >
+              </loading>
+            </div>
           </div>
           <div class="">
             <button
@@ -216,20 +219,19 @@
         </div>
       </div>
     </div>
-      
   </div>
 </template>
 <script>
 //引入外部
 // import '../../../public/front_css/bootstrap.min.css'
 import "../../../public/front_css/signin.css";
-import VueLoading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import VueLoading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   name: "SignIn",
-  components:{
-    'loading':VueLoading
+  components: {
+    loading: VueLoading,
   },
   data() {
     return {
@@ -290,22 +292,21 @@ export default {
       }
     },
     userForget: async function () {
-      
       let data_result = await this.checkFrogetData();
       if (data_result == false) {
         return false;
       }
-      this.$store.commit("LoadforData",true)
+      this.$store.commit("LoadforData", true);
       this.FunctionToken(this.forgetFunction, this.Forget_ACCOUNT_Data);
     },
     forgetFunction: function (data_in) {
       //要調整搜尋之後直接跑流程,不要等respons
       this.apiSendForget(data_in)
         .then((res) => {
-          this.$store.commit("LoadforData",false)
+          this.$store.commit("LoadforData", false);
           if (res.data.Status == true) {
             // alert("已寄出")
-            
+
             this.showAlert({
               title: "成功",
               text: "已寄出郵件",
@@ -318,7 +319,6 @@ export default {
             this.$router.push({ path: "/ForgetPassword" });
           }
           if (res.data.Status == false) {
-           
             alert("郵件或帳號輸入有誤，找不到使用者");
             this.Forget_ACCOUNT_Data.AC_USER = "";
             this.Forget_ACCOUNT_Data.AC_EMAIL = "";
@@ -326,25 +326,23 @@ export default {
           }
         })
         .catch((err) => {
-          this.$store.commit("LoadforData",false)
+          this.$store.commit("LoadforData", false);
           console.log(err + "錯誤");
         });
     },
     SaveAccount: async function () {
-      
       let checkImagePassData_result = await this.checkImagePassData();
       if (checkImagePassData_result == false) {
         return false;
       }
-      this.$store.commit("LoadforData",true)
+      this.$store.commit("LoadforData", true);
       this.FunctionToken(this.loginFunction, this.ACCOUNT_Data);
     },
     loginFunction: function (data_in) {
       this.apilogin(data_in)
         .then(async (res) => {
-          this.$store.commit("LoadforData",false)
+          this.$store.commit("LoadforData", false);
           if (res.data.Status == true) {
-            
             await this.showAlert({
               title: "成功",
               text: "歡迎登入",
@@ -358,7 +356,6 @@ export default {
             console.log("T1");
           }
           if (res.data.Status == false) {
-            
             alert("登入資訊有誤");
             this.DialogModal.hide();
             this.ImageCodeFunction();
@@ -368,7 +365,7 @@ export default {
           }
         })
         .catch((err) => {
-         this.$store.commit("LoadforData",false)
+          this.$store.commit("LoadforData", false);
           console.log(err + "錯");
         });
     },
