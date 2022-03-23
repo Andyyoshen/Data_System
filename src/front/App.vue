@@ -2,7 +2,6 @@
   <div id="app">
     <!-- <a  class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a> -->
     <frontheader></frontheader>
-
     <div class="vld-parent">
       <loading
         loader="Dots"
@@ -28,6 +27,7 @@
       <router-link to="/login">Login</router-link>
     </div> -->
     <router-view />
+    <frontfooter></frontfooter>
   </div>
 </template>
 
@@ -55,17 +55,22 @@
 </style>
 <script>
 import frontheader from "../front/components/frontheader.vue";
+import frontfooter from "../front/components/frontfooter.vue"
 import VueLoading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
+// import DatePicker from "../front/components/DatePicker.vue"
 export default {
   name: "front",
   components: {
     frontheader,
+    frontfooter,
     loading: VueLoading,
+    // DatePicker
   },
   data() {
     return {
       isLoading: false,
+      // score:4.5,
     };
   },
   beforeCreate() {

@@ -19,8 +19,9 @@
           </div>
         </div>
       </div>
-
+     
       <div class="album py-5 bg-light">
+        
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
@@ -88,7 +89,7 @@
                 />
                 <div class="card-body">
                   <p class="card-text">
-                    {{usualImage_path.contan}}
+                    {{ usualImage_path.contan }}
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -120,7 +121,7 @@
                 />
                 <div class="card-body">
                   <p class="card-text">
-                    {{value.contan}}
+                    {{ value.contan }}
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -139,7 +140,7 @@
                 </div>
               </div>
             </div>
-
+            
             <!----------------假資料---------->
             <!-- <div class="col">
               <div class="card shadow-sm">
@@ -210,7 +211,9 @@
         </div>
       </div>
     </main>
+    
   </div>
+  
 </template>
 
 <script>
@@ -218,11 +221,14 @@
 //import HelloWorld from "@/components/HelloWorld.vue";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox.css";
+// import DatePicker from "../components/DatePicker.vue"
 export default {
   name: "Home",
-  components: {},
+  components: {
+  },
   data() {
     return {
+     
       gallery: [
         {
           src: require("../../../public/front_assets/Dog5.jpg"),
@@ -241,24 +247,24 @@ export default {
         Img_number: "",
       },
       usualImage_path: {
-          path: require("../../../public/front_assets/Dog5.jpg"),
-          contan:"訪客即可觀看，我是和服柴"
+        path: require("../../../public/front_assets/Dog5.jpg"),
+        contan: "訪客即可觀看，我是和服柴",
       },
       Image_path: [
         {
           path: require("../../../public/front_assets/Dog.jpg"),
           Img_number: "Test01",
-          contan:"權限皇冠才能觀看，我是復古柴"
+          contan: "權限皇冠才能觀看，我是復古柴",
         },
         {
           path: require("../../../public/front_assets/Dog2.jpg"),
           Img_number: "Test02",
-          contan:"權限鑽石才能觀看，我是墨鏡柴"
+          contan: "權限鑽石才能觀看，我是墨鏡柴",
         },
         {
           path: require("../../../public/front_assets/Dog3.jpg"),
           Img_number: "Test03",
-          contan:"權限同牌才能觀看，我是少年柴"
+          contan: "權限同牌才能觀看，我是少年柴",
         },
       ],
       // Image_path2:[
@@ -321,19 +327,19 @@ export default {
       return this.$swal(object);
     },
     usualLookDogImage: async function (data) {
-            Fancybox.show(
-              this.gallery, //將格式放入
-              {
-                Toolbar: {
-                  display: [
-                    { id: "zoom", position: "left" },
-                    { id: "fullscreen", position: "left" },
-                    { id: "counter", position: "center" },
-                    { id: "close", position: "right" },
-                  ],
-                },
-              }
-            );
+      Fancybox.show(
+        this.gallery, //將格式放入
+        {
+          Toolbar: {
+            display: [
+              { id: "zoom", position: "left" },
+              { id: "fullscreen", position: "left" },
+              { id: "counter", position: "center" },
+              { id: "close", position: "right" },
+            ],
+          },
+        }
+      );
     },
     LookDogImage: async function (data) {
       this.Image_data.Img_number = data;
@@ -416,7 +422,7 @@ export default {
 <style scoped>
 #Home_Title {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
-    url("https://breakthroughdesign.com/wp-content/themes/bdg/images/home-slider-qualitrol-corp-color2.png");
+    url("../../../public/img/pexels-quintin-gellar-313782.jpg");
 
   background-position: center;
   background-size: cover;
