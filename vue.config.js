@@ -29,7 +29,7 @@ module.exports = {
     // },
     proxy: {
       "/api2": {
-        target: "http://localhost:5000/",
+        target: "https://andyblog.tw/",
         ws: true,
         changOrigin: true,
         pathRewrite: {
