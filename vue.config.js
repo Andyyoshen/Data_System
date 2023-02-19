@@ -29,7 +29,7 @@ module.exports = {
     // },
     proxy: {
       "/api2": {
-        target: "https://andyblog.tw/",
+        target: "http://localhost:8000/api2/", //代理的伺服器
         ws: true,
         changOrigin: true,
         pathRewrite: {

@@ -2,9 +2,9 @@
   <div>
     <div id="SigninId" class="text-center">
       <main class="form-signin">
-         <div>
+        <!-- <div>
             <DatePicker :score="score"></DatePicker>
-        </div>
+        </div> -->
         <form>
           <img
             class="mb-4"
@@ -230,18 +230,18 @@
 import "../../../public/front_css/signin.css";
 import VueLoading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
-import DatePicker from "../components/DatePicker.vue"
+import DatePicker from "../components/DatePicker.vue";
 
 export default {
   name: "SignIn",
   components: {
     loading: VueLoading,
-     DatePicker
+    DatePicker,
   },
   data() {
     return {
-      score:5.5,
-      now : new Date(),
+      score: 5.5,
+      now: new Date(),
       isLoading: false,
       ImageCode: "",
       ACCOUNT_Data: {
